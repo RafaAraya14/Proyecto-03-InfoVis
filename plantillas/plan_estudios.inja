@@ -99,9 +99,9 @@
 
         {% if x1 > 0 and x2 > 0 %}
           {% if enlace.tipo == "requisito" %}
-            <path d="M {{ x1 }} {{ y1 }} L {{ x2 }} {{ y2 }}" class="edge-requisito" marker-end="url(#arrow-req)" />
+            <path d="M {{ x1 }} {{ y1 }} L {{ x2 }} {{ y2 }}" class="edge-requisito" marker-end="url(#arrow-req)" data-fuente="{{ enlace.fuente }}" data-destino="{{ enlace.destino }}" />
           {% else %}
-            <path d="M {{ x1 }} {{ y1 }} L {{ x2 }} {{ y2 }}" class="edge-correquisito" marker-end="url(#arrow-correq)" />
+            <path d="M {{ x1 }} {{ y1 }} L {{ x2 }} {{ y2 }}" class="edge-correquisito" marker-end="url(#arrow-correq)" data-fuente="{{ enlace.fuente }}" data-destino="{{ enlace.destino }}" />
           {% endif %}
         {% endif %}
 
