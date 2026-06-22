@@ -1,0 +1,338 @@
+
+
+
+
+<svg width="1200" 
+     height="700"
+     style="background-color: #fafafa;"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:v="https://arce.github.io/odviz">
+
+  <style>
+    .curso-node { cursor: pointer; transition: transform 0.2s; }
+    .curso-node:hover { filter: drop-shadow(0px 5px 8px rgba(0,0,0,0.35)); }
+    .label-sigla { font-family: 'Segoe UI', Helvetica, sans-serif; font-weight: bold; font-size: 11px; fill: #ffffff; text-anchor: middle; pointer-events: none; }
+    .node-container { display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; padding: 2px; pointer-events: none; }
+    .label-html-nombre { font-family: 'Segoe UI', Helvetica, sans-serif; font-size: 10px; color: #2c3e50; font-weight: 600; line-height: 1.1; word-wrap: break-word; }
+    .edge-requisito { stroke: #34495e; stroke-width: 2.5px; fill: none; }
+    .edge-correquisito { stroke: #e74c3c; stroke-width: 2px; stroke-dasharray: 5,4; fill: none; }
+    .axis-text { font-family: 'Segoe UI', Helvetica, sans-serif; font-size: 12px; fill: #95a5a6; font-weight: bold; }
+    .grid-line { stroke: #ecf0f1; stroke-width: 1px; stroke-dasharray: 2,2; }
+  </style>
+
+  <defs>
+    <marker id="arrow-req" viewBox="0 0 10 10" refX="32" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34495e" />
+    </marker>
+    <marker id="arrow-correq" viewBox="0 0 10 10" refX="32" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#e74c3c" />
+    </marker>
+  </defs>
+
+  <g transform="translate(140,100)">
+    
+        <line x1="160.0" y1="0" x2="160.0" y2="520" class="grid-line" />
+        <line x1="320.0" y1="0" x2="320.0" y2="520" class="grid-line" />
+        <line x1="480.0" y1="0" x2="480.0" y2="520" class="grid-line" />
+        <line x1="640.0" y1="0" x2="640.0" y2="520" class="grid-line" />
+        <line x1="800.0" y1="0" x2="800.0" y2="520" class="grid-line" />
+
+    <g id="links-group">
+        
+            
+
+            
+
+            <path d="M 320.0 40.0 L 480.0 40.0" class="edge-requisito" marker-end="url(#arrow-req)" />
+
+        
+            
+
+            
+
+            <path d="M 480.0 40.0 L 640.0 40.0" class="edge-requisito" marker-end="url(#arrow-req)" />
+
+        
+            
+
+            
+
+            <path d="M 320.0 300.0 L 480.0 300.0" class="edge-requisito" marker-end="url(#arrow-req)" />
+
+        
+            
+
+            
+
+            <path d="M 480.0 300.0 L 640.0 300.0" class="edge-requisito" marker-end="url(#arrow-req)" />
+
+        
+            
+
+            
+
+            <path d="M 640.0 40.0 L 800.0 473.33333333333337" class="edge-requisito" marker-end="url(#arrow-req)" />
+
+        
+            
+
+            
+
+            <path d="M 320.0 300.0 L 320.0 40.0" class="edge-correquisito" marker-end="url(#arrow-correq)" />
+
+    </g>
+
+    <g id="nodes-group">
+        
+        
+
+
+
+
+        <g class="curso-node" id="node_link_0" transform="translate(320.0,40.0)"
+           v:name="Fundamentos de Programación" 
+           v:sigla="FP101" 
+           v:semestre="1" 
+           v:creditos="4" 
+           v:horas="6" 
+           v:area="Programación"
+           v:requisitos=""
+           v:correquisitos="MAT101 ">
+          
+          <a href="#row_0">
+              <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#c0392b" stroke="#ffffff" stroke-width="2.5"/>
+          </a>
+
+          <text y="4" class="label-sigla">FP101</text>
+          
+          <foreignObject x="-55" y="34" width="110" height="50">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Fundamentos de Programación</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+        <g class="curso-node" id="node_link_1" transform="translate(480.0,40.0)"
+           v:name="Programación Orientada a Objetos" 
+           v:sigla="POO202" 
+           v:semestre="2" 
+           v:creditos="4" 
+           v:horas="6" 
+           v:area="Programación"
+           v:requisitos="FP101 "
+           v:correquisitos="">
+          
+          <a href="#row_1">
+              <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#c0392b" stroke="#ffffff" stroke-width="2.5"/>
+          </a>
+
+          <text y="4" class="label-sigla">POO202</text>
+          
+          <foreignObject x="-55" y="34" width="110" height="50">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Programación Orientada a Objetos</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+        <g class="curso-node" id="node_link_2" transform="translate(640.0,40.0)"
+           v:name="Estructuras de Datos" 
+           v:sigla="ED303" 
+           v:semestre="3" 
+           v:creditos="5" 
+           v:horas="8" 
+           v:area="Programación"
+           v:requisitos="POO202 "
+           v:correquisitos="">
+          
+          <a href="#row_2">
+              <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#c0392b" stroke="#ffffff" stroke-width="2.5"/>
+          </a>
+
+          <text y="4" class="label-sigla">ED303</text>
+          
+          <foreignObject x="-55" y="38" width="110" height="50">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Estructuras de Datos</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+        <g class="curso-node" id="node_link_3" transform="translate(320.0,300.0)"
+           v:name="Cálculo Diferencial" 
+           v:sigla="MAT101" 
+           v:semestre="1" 
+           v:creditos="4" 
+           v:horas="5" 
+           v:area="Matemáticas"
+           v:requisitos=""
+           v:correquisitos="">
+          
+          <a href="#row_3">
+              <circle cx="0" cy="0" r="28" fill="#8e44ad" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">MAT101</text>
+          
+          <foreignObject x="-55" y="34" width="110" height="50">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Cálculo Diferencial</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+        <g class="curso-node" id="node_link_4" transform="translate(480.0,300.0)"
+           v:name="Cálculo Integral" 
+           v:sigla="MAT202" 
+           v:semestre="2" 
+           v:creditos="4" 
+           v:horas="5" 
+           v:area="Matemáticas"
+           v:requisitos="MAT101 "
+           v:correquisitos="">
+          
+          <a href="#row_4">
+              <circle cx="0" cy="0" r="28" fill="#8e44ad" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">MAT202</text>
+          
+          <foreignObject x="-55" y="34" width="110" height="50">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Cálculo Integral</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+        <g class="curso-node" id="node_link_5" transform="translate(800.0,473.33333333333337)"
+           v:name="Bases de Datos" 
+           v:sigla="BD404" 
+           v:semestre="4" 
+           v:creditos="4" 
+           v:horas="6" 
+           v:area="Bases de Datos"
+           v:requisitos="ED303 "
+           v:correquisitos="">
+          
+          <a href="#row_5">
+              <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#16a085" stroke="#ffffff" stroke-width="2.5"/>
+          </a>
+
+          <text y="4" class="label-sigla">BD404</text>
+          
+          <foreignObject x="-55" y="34" width="110" height="50">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Bases de Datos</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+        <g class="curso-node" id="node_link_6" transform="translate(640.0,300.0)"
+           v:name="Álgebra Lineal" 
+           v:sigla="MAT303" 
+           v:semestre="3" 
+           v:creditos="3" 
+           v:horas="4" 
+           v:area="Matemáticas"
+           v:requisitos="MAT202 "
+           v:correquisitos="">
+          
+          <a href="#row_6">
+              <circle cx="0" cy="0" r="24" fill="#8e44ad" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">MAT303</text>
+          
+          <foreignObject x="-55" y="30" width="110" height="50">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Álgebra Lineal</span>
+            </div>
+          </foreignObject>
+        </g>
+
+    </g>
+
+        <text x="320.0" y="-35" text-anchor="middle" class="axis-text">Bloque 1</text>
+        <text x="480.0" y="-35" text-anchor="middle" class="axis-text">Bloque 2</text>
+        <text x="640.0" y="-35" text-anchor="middle" class="axis-text">Bloque 3</text>
+        <text x="800.0" y="-35" text-anchor="middle" class="axis-text">Bloque 4</text>
+
+    <g id="labels-ramas">
+        
+        
+          
+          <text x="10" y="44.0" text-anchor="start" class="axis-text" style="fill: #c0392b; font-size: 11px;">Programación</text>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          <text x="10" y="304.0" text-anchor="start" class="axis-text" style="fill: #8e44ad; font-size: 11px;">Matemáticas</text>
+        
+        
+        
+        
+        
+        
+          
+          <text x="10" y="477.33333333333337" text-anchor="start" class="axis-text" style="fill: #16a085; font-size: 11px;">Bases de Datos</text>
+        
+        
+        
+        
+    </g>
+
+  </g>
+
+  <v:table id="datos_plan" columns="Sigla, Nombre, Semestre, Créditos, Horas, Área" visualization="chart">
+      <v:row id="row_0">FP101,Fundamentos de Programación,1,4,6,Programación</v:row>
+      <v:row id="row_1">POO202,Programación Orientada a Objetos,2,4,6,Programación</v:row>
+      <v:row id="row_2">ED303,Estructuras de Datos,3,5,8,Programación</v:row>
+      <v:row id="row_3">MAT101,Cálculo Diferencial,1,4,5,Matemáticas</v:row>
+      <v:row id="row_4">MAT202,Cálculo Integral,2,4,5,Matemáticas</v:row>
+      <v:row id="row_5">BD404,Bases de Datos,4,4,6,Bases de Datos</v:row>
+      <v:row id="row_6">MAT303,Álgebra Lineal,3,3,4,Matemáticas</v:row>
+  </v:table>
+
+</svg>

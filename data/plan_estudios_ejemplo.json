@@ -1,0 +1,93 @@
+{
+"nodos": [
+{
+"nombre": "Fundamentos de Programación",
+"sigla": "FP101",
+"semestre": 1,
+"creditos": 4,
+"horas": 6,
+"area": "Programación"
+},
+{
+"nombre": "Programación Orientada a Objetos",
+"sigla": "POO202",
+"semestre": 2,
+"creditos": 4,
+"horas": 6,
+"area": "Programación"
+},
+{
+"nombre": "Estructuras de Datos",
+"sigla": "ED303",
+"semestre": 3,
+"creditos": 5,
+"horas": 8,
+"area": "Programación"
+},
+{
+"nombre": "Cálculo Diferencial",
+"sigla": "MAT101",
+"semestre": 1,
+"creditos": 4,
+"horas": 5,
+"area": "Matemáticas"
+},
+{
+"nombre": "Cálculo Integral",
+"sigla": "MAT202",
+"semestre": 2,
+"creditos": 4,
+"horas": 5,
+"area": "Matemáticas"
+},
+{
+"nombre": "Bases de Datos",
+"sigla": "BD404",
+"semestre": 4,
+"creditos": 4,
+"horas": 6,
+"area": "Bases de Datos"
+},
+{
+"nombre": "Álgebra Lineal",
+"sigla": "MAT303",
+"semestre": 3,
+"creditos": 3,
+"horas": 4,
+"area": "Matemáticas"
+}
+],
+"enlaces": [
+{
+"fuente": "FP101",
+"destino": "POO202",
+"tipo": "requisito"
+},
+{
+"fuente": "POO202",
+
+"destino": "ED303",
+"tipo": "requisito"
+},
+{
+"fuente": "MAT101",
+"destino": "MAT202",
+"tipo": "requisito"
+},
+{
+"fuente": "MAT202",
+"destino": "MAT303",
+"tipo": "requisito"
+},
+{
+"fuente": "ED303",
+"destino": "BD404",
+"tipo": "requisito"
+},
+{
+"fuente": "MAT101",
+"destino": "FP101",
+"tipo": "correquisito"
+}
+]
+}

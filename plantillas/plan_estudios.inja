@@ -1,0 +1,246 @@
+{# Plantilla InjaX para la Visualización del Plan de Estudios #}
+{% set margin = obj("top", 100, "right", 100, "bottom", 80, "left", 140) %}
+{% set width = 1200 - margin.left - margin.right %}
+{% set height = 700 - margin.top - margin.bottom %}
+
+{# 1. CÁLCULO DINÁMICO DE SEMESTRES (Máximo valor encontrado) #}
+{% set max_semestre = 1 %}
+{% for n in nodos %}
+  {% if n.semestre > max_semestre %}
+    {% set max_semestre = n.semestre %}
+  {% endif %}
+{% endfor %}
+
+{# Dimensiones de paso adaptativas fijas #}
+{% set max_semestre_plus = max_semestre + 2 %}
+{% set dx = width / max_semestre_plus %}
+{% set dy = height / 6 %}
+
+{# Colchón vertical para separar la primera fila de los textos superiores #}
+{% set y_offset = 40 %}
+
+<svg width="{{ width + margin.left + margin.right }}" 
+     height="{{ height + margin.top + margin.bottom }}"
+     style="background-color: #fafafa;"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:v="https://arce.github.io/odviz">
+
+  <style>
+    .curso-node { cursor: pointer; transition: transform 0.2s; }
+    .curso-node:hover { filter: drop-shadow(0px 5px 8px rgba(0,0,0,0.35)); }
+    .label-sigla { font-family: 'Segoe UI', Helvetica, sans-serif; font-weight: bold; font-size: 11px; fill: #ffffff; text-anchor: middle; pointer-events: none; }
+    .node-container { display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; padding: 2px; pointer-events: none; }
+    .label-html-nombre { font-family: 'Segoe UI', Helvetica, sans-serif; font-size: 10px; color: #2c3e50; font-weight: 600; line-height: 1.1; word-wrap: break-word; }
+    .edge-requisito { stroke: #34495e; stroke-width: 2.5px; fill: none; }
+    .edge-correquisito { stroke: #e74c3c; stroke-width: 2px; stroke-dasharray: 5,4; fill: none; }
+    .axis-text { font-family: 'Segoe UI', Helvetica, sans-serif; font-size: 12px; fill: #95a5a6; font-weight: bold; }
+    .grid-line { stroke: #ecf0f1; stroke-width: 1px; stroke-dasharray: 2,2; }
+  </style>
+
+  <defs>
+    {# Marcador para Flechas de Requisitos #}
+    <marker id="arrow-req" viewBox="0 0 10 10" refX="32" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34495e" />
+    </marker>
+    {# Marcador para Flechas de Correquisitos #}
+    <marker id="arrow-correq" viewBox="0 0 10 10" refX="32" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#e74c3c" />
+    </marker>
+  </defs>
+
+  <g transform="translate({{ margin.left }},{{ margin.top }})">
+    
+    {# Líneas guía verticales adaptadas #}
+    {% for i in range(max_semestre_plus) %}
+      {% if i > 0 %}
+        <line x1="{{ i * dx }}" y1="0" x2="{{ i * dx }}" y2="{{ height }}" class="grid-line" />
+      {% endif %}
+    {% endfor %}
+
+    {# RENDERIZADO DE ENLACES GENERALIZADOS #}
+    <g id="links-group">
+      {% for enlace in enlaces %}
+        
+        {# Coordenadas dinámicas de Origen #}
+        {% set x1 = 0 %}{% set y1 = 0 %}
+        {% for n in nodos %}
+          {% if n.sigla == enlace.fuente %}
+            {% set x1 = (n.semestre + 1) * dx %}
+            
+            {% set primer_nodo_idx = 1 %}
+            {% set encontrado_origen = false %}
+            {% for buscador in nodos %}
+              {% if not encontrado_origen %}
+                {% if buscador.area == n.area %}
+                  {% set primer_nodo_idx = loop.index %}
+                  {% set encontrado_origen = true %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            {% set y1 = (primer_nodo_idx * dy) + y_offset %}
+          {% endif %}
+        {% endfor %}
+
+        {# Coordenadas dinámicas de Destino #}
+        {% set x2 = 0 %}{% set y2 = 0 %}
+        {% for n in nodos %}
+          {% if n.sigla == enlace.destino %}
+            {% set x2 = (n.semestre + 1) * dx %}
+            
+            {% set primer_nodo_dest_idx = 1 %}
+            {% set encontrado_destino = false %}
+            {% for buscador in nodos %}
+              {% if not encontrado_destino %}
+                {% if buscador.area == n.area %}
+                  {% set primer_nodo_dest_idx = loop.index %}
+                  {% set encontrado_destino = true %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            {% set y2 = (primer_nodo_dest_idx * dy) + y_offset %}
+          {% endif %}
+        {% endfor %}
+
+        {# Trazo adaptativo lineal #}
+        {% if x1 > 0 and x2 > 0 %}
+          {% if enlace.tipo == "requisito" %}
+            <path d="M {{ x1 }} {{ y1 }} L {{ x2 }} {{ y2 }}" class="edge-requisito" marker-end="url(#arrow-req)" />
+          {% else %}
+            <path d="M {{ x1 }} {{ y1 }} L {{ x2 }} {{ y2 }}" class="edge-correquisito" marker-end="url(#arrow-correq)" />
+          {% endif %}
+        {% endif %}
+
+      {% endfor %}
+    </g>
+
+    {# RENDERIZADO DE NODOS MULTIVARIABLES GENERALIZADOS #}
+    <g id="nodes-group">
+      {% for nodo in nodos %}
+        
+        {% set cx = (nodo.semestre + 1) * dx %}
+        
+        {% set id_fila = 1 %}
+        {% set encontrado_nodo = false %}
+        {% for buscador in nodos %}
+          {% if not encontrado_nodo %}
+            {% if buscador.area == nodo.area %}
+              {% set id_fila = loop.index %}
+              {% set encontrado_nodo = true %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+        {% set cy = (id_fila * dy) + y_offset %}
+
+        {# Asignación de Paletas de Color estables indexadas #}
+        {% set color = "#7f8c8d" %}
+        {% set color_modulo = id_fila % 7 %}
+        {% if color_modulo == 1 %}{% set color = "#1b4f72" %}
+        {% else if color_modulo == 2 %}{% set color = "#27ae60" %}
+        {% else if color_modulo == 3 %}{% set color = "#8e44ad" %}
+        {% else if color_modulo == 4 %}{% set color = "#d35400" %}
+        {% else if color_modulo == 5 %}{% set color = "#16a085" %}
+        {% else if color_modulo == 6 %}{% set color = "#f39c12" %}
+        {% else %}{% set color = "#c0392b" %}{% endif %}
+
+        {# Escalamiento basado en Créditos #}
+        {% set r_node = 24 %}
+        {% if nodo.creditos == 3 %}{% set r_node = 24 %}
+        {% else if nodo.creditos == 4 %}{% set r_node = 28 %}
+        {% else if nodo.creditos >= 5 %}{% set r_node = 32 %}{% endif %}
+
+        {# EXTRACTO DE DEPENDENCIAS MANUAL #}
+        {% set req_list = "" %}
+        {% set correq_list = "" %}
+        {% for e in enlaces %}
+          {% if e.destino == nodo.sigla %}
+            {% if e.tipo == "requisito" %}
+              {% set req_list = req_list + e.fuente + " " %}
+            {% else %}
+              {% set correq_list = correq_list + e.fuente + " " %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+
+        {# Contenedor estructural del Nodo con atributos ODViz #}
+        <g class="curso-node" id="node_link_{{ loop.index }}" transform="translate({{ cx }},{{ cy }})"
+           v:name="{{ nodo.nombre }}" 
+           v:sigla="{{ nodo.sigla }}" 
+           v:semestre="{{ nodo.semestre }}" 
+           v:creditos="{{ nodo.creditos }}" 
+           v:horas="{{ nodo.horas }}" 
+           v:area="{{ nodo.area }}"
+           v:requisitos="{{ req_list }}"
+           v:correquisitos="{{ correq_list }}">
+          
+          {# Vinculación interactiva hipervincular obligatoria para simple-table.js #}
+          <a href="#row_{{ loop.index }}">
+            {% if nodo.horas >= 6 %}
+              <rect x="-32" y="-32" width="64" height="64" rx="8" fill="{{ color }}" stroke="#ffffff" stroke-width="2.5"/>
+            {% else %}
+              <circle cx="0" cy="0" r="{{ r_node }}" fill="{{ color }}" stroke="#ffffff" stroke-width="2.5" />
+            {% endif %}
+          </a>
+
+          <text y="4" class="label-sigla">{{ nodo.sigla }}</text>
+          
+          <foreignObject x="-55" y="{{ r_node + 6 }}" width="110" height="50">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">{{ nodo.nombre }}</span>
+            </div>
+          </foreignObject>
+        </g>
+
+      {% endfor %}
+    </g>
+
+    {# Rotulado superior dinámico de Semestres #}
+    {% set max_bloques_limite = max_semestre + 1 %}
+    {% for i in range(max_bloques_limite) %}
+      {% if i > 0 %}
+        <text x="{{ (i + 1) * dx }}" y="-35" text-anchor="middle" class="axis-text">Bloque {{ i }}</text>
+      {% endif %}
+    {% endfor %}
+
+    {# Rotulado izquierdo dinámico de áreas mapeadas #}
+    <g id="labels-ramas">
+      {% for n_lbl in nodos %}
+        
+        {% set primer_coincidente_idx = 0 %}
+        {% set encontrado_lbl = false %}
+        {% for buscador in nodos %}
+          {% if not encontrado_lbl %}
+            {% if buscador.area == n_lbl.area %}
+              {% set primer_coincidente_idx = loop.index %}
+              {% set encontrado_lbl = true %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+        
+        {% if primer_coincidente_idx == loop.index %}
+          {% set lbl_color = "#7f8c8d" %}
+          {% set color_lbl_mod = loop.index % 7 %}
+          {% if color_lbl_mod == 1 %}{% set lbl_color = "#1b4f72" %}
+          {% else if color_lbl_mod == 2 %}{% set lbl_color = "#27ae60" %}
+          {% else if color_lbl_mod == 3 %}{% set lbl_color = "#8e44ad" %}
+          {% else if color_lbl_mod == 4 %}{% set lbl_color = "#d35400" %}
+          {% else if color_lbl_mod == 5 %}{% set lbl_color = "#16a085" %}
+          {% else if color_lbl_mod == 6 %}{% set lbl_color = "#f39c12" %}
+          {% else %}{% set lbl_color = "#c0392b" %}
+          {% endif %}
+          
+          <text x="10" y="{{ (loop.index * dy) + y_offset + 4 }}" text-anchor="start" class="axis-text" style="fill: {{ lbl_color }}; font-size: 11px;">{{ n_lbl.area }}</text>
+        {% endif %}
+        
+      {% endfor %}
+    </g>
+
+  </g>
+
+  {# TABLA DE DATOS OCULTA PERO INCRUSTADA EXCLUSIVA PARA EL CONTROLADOR DE TU PAGINA WEB #}
+  <v:table id="datos_plan" columns="Sigla, Nombre, Semestre, Créditos, Horas, Área" visualization="chart">
+    {% for nodo in nodos %}
+      <v:row id="row_{{ loop.index }}">{{ nodo.sigla }},{{ nodo.nombre }},{{ nodo.semestre }},{{ nodo.creditos }},{{ nodo.horas }},{{ nodo.area }}</v:row>
+    {% endfor %}
+  </v:table>
+
+</svg>

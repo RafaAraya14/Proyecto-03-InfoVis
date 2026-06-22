@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prueba de Plan de Estudios - ODViz</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { overflow: hidden; height: 100vh; display: flex; flex-direction: column; font-family: 'Segoe UI', sans-serif; }
+    
+    .top-bar {
+      background: #1b4f72; padding: 15px 20px; display: flex; align-items: center; color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .top-bar h3 { font-size: 18px; font-weight: 600; }
+    
+    #split-container { width: 100vw; flex-grow: 1; height: calc(100vh - 50px); display: flex; flex-direction: column; }
+    #svg-panel { background: #fafafa; display: flex; justify-content: center; align-items: center; overflow: auto; position: relative; }
+    #svg-panel object { width: 100%; height: 100%; display: block; }
+    
+    #table-panel { background: #ffffff; padding: 20px; overflow: auto; border-top: 2px solid #bdc3c7; }
+    
+    /* Estilos para una tabla básica de pruebas */
+    .data-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px; }
+    .data-table th, .data-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #e0e0e0; }
+    .data-table th { background-color: #f4f6f7; color: #34495e; font-weight: bold; }
+    .data-table tr.selected { background-color: #d4e6f1 !important; font-weight: 600; }
+    .data-table tr:hover { background-color: #faa; background-color: #f5f7f8; cursor: pointer; }
+
+    /* Estilizador del separador Split.js */
+    .gutter.gutter-vertical { background: #2980b9; cursor: row-resize; height: 8px !important; }
+    .gutter.gutter-vertical:hover { background: #1b4f72; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/split.js@1.6.5/dist/split.min.js"></script>
+</head>
+<body>
+
+  <div class="top-bar">
+    <h3>Visualizador del Plan de Estudios Interactivo (ODViz)</h3>
+  </div>
+
+  <div id="split-container">
+    <div id="svg-panel">
+      <object id="svg-object" type="image/svg+xml" data="./svg/output.svg"></object>
+    </div>
+    
+    <div id="table-panel">
+      <h4 style="color: #2c3e50; margin-bottom: 8px;">Datos del Plan de Estudios Incrustados</h4>
+      <div id="tabla-contenedor">
+        <table class="data-table">
+          <thead>
+            <tr id="table-headers">
+              <th>Sigla</th>
+              <th>Nombre del Curso</th>
+              <th>Bloque</th>
+              <th>Créditos</th>
+              <th>Horas</th>
+              <th>Área Académica</th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+            <tr><td colspan="6" style="text-align:center; color:#95a5a6;">Cargando metadatos desde el mapa SVG...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Inicializar Split.js en formato Vertical (Panel gráfico arriba, Tabla abajo) [cite: 117]
+    Split(["#svg-panel", "#table-panel"], {
+      sizes: [65, 35],
+      direction: "vertical",
+      gutterSize: 8,
+      minSize: [200, 100]
+    });
+
+    const svgObject = document.getElementById('svg-object');
+
+    svgObject.addEventListener('load', function() {
+      const svgDoc = svgObject.contentDocument;
+      if (!svgDoc) {
+        console.error("No se pudo acceder al contenido del documento SVG.");
+        return;
+      }
+
+      // 1. Extraer los datos desde la etiqueta oculta <v:table> que inyectamos en el SVG [cite: 117]
+      const factTable = svgDoc.querySelector('v\\:table, table'); 
+      const rows = svgDoc.getElementsByTagName('v:row');
+      const tbody = document.getElementById('table-body');
+      
+      if (rows.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:#e74c3c;">No se encontraron etiquetas de datos v:row en el SVG.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = ""; // Limpiar mensaje de carga
+
+      // 2. Poblar la tabla HTML dinámicamente con los datos mapeados del JSON [cite: 9, 117]
+      for (let row of rows) {
+        const rowId = row.getAttribute('id');
+        const content = row.textContent.trim();
+        const parts = content.split(',');
+
+        const tr = document.createElement('tr');
+        tr.setAttribute('data-row-id', rowId);
+
+        parts.forEach(val => {
+          const td = document.createElement('td');
+          td.textContent = val.trim();
+          tr.appendChild(td);
+        });
+
+        // Evento: Al hacer clic en una fila de la tabla, resalta el nodo correspondiente en el SVG [cite: 117]
+        tr.addEventListener('click', function() {
+          deseleccionarTodo();
+          tr.classList.add('selected');
+          
+          // Buscar el elemento gráfico en el SVG usando el índice de la fila
+          const index = rowId.split('_')[1];
+          const svgNode = svgDoc.getElementById(`node_link_${index}`);
+          if (svgNode) {
+            svgNode.style.outline = "3px solid #2980b9";
+            svgNode.style.outlineOffset = "4px";
+            svgNode.style.transition = "all 0.2s";
+          }
+        });
+
+        tbody.appendChild(tr);
+      }
+
+      // 3. Vincular los clics del SVG hacia la Tabla HTML (Interacción Inversa) [cite: 117]
+      const cursoNodes = svgDoc.querySelectorAll('.curso-node');
+      cursoNodes.forEach(node => {
+        node.addEventListener('click', function(e) {
+          e.preventDefault();
+          const nodeId = node.getAttribute('id'); // Ej: node_link_1
+          const index = nodeId.split('_')[2];
+          const targetRowId = `row_${index}`;
+
+          deseleccionarTodo();
+
+          // Resaltar el elemento gráfico seleccionado
+          node.style.outline = "3px solid #2980b9";
+          node.style.outlineOffset = "4px";
+
+          // Buscar la fila correspondiente en la tabla HTML, seleccionarla y hacer scroll [cite: 117]
+          const targetRow = document.querySelector(`[data-row-id="${targetRowId}"]`);
+          if (targetRow) {
+            targetRow.classList.add('selected');
+            targetRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        });
+      });
+
+      function deseleccionarTodo() {
+        // Remover clases de selección en la tabla
+        document.querySelectorAll('.data-table tr').forEach(r => r.classList.remove('selected'));
+        // Limpiar los contornos de selección activos en el SVG
+        cursoNodes.forEach(n => n.style.outline = "none");
+      }
+    });
+  </script>
+</body>
+</html>
