@@ -45,6 +45,10 @@
     
     <div id="table-panel">
       <h4 style="color: #2c3e50; margin-bottom: 8px;">Datos del Plan de Estudios Incrustados</h4>
+      
+      <input type="text" id="buscador-odviz" placeholder="Buscar por sigla, nombre o área..." 
+             style="margin-bottom: 12px; padding: 8px; width: 100%; border: 1px solid #bdc3c7; border-radius: 4px;">
+      
       <div id="tabla-contenedor">
         <table class="data-table">
           <thead>
@@ -128,34 +132,115 @@
         tbody.appendChild(tr);
       }
 
-      // 3. Vincular los clics del SVG hacia la Tabla HTML (Interacción Inversa) [cite: 117]
+      // 3. Vincular los clics del SVG hacia la Tabla HTML (Interacción Inversa)
       const cursoNodes = svgDoc.querySelectorAll('.curso-node');
       cursoNodes.forEach(node => {
         node.addEventListener('click', function(e) {
           e.preventDefault();
-          const nodeId = node.getAttribute('id'); // Ej: node_link_1
+          const nodeId = node.getAttribute('id');
           const index = nodeId.split('_')[2];
           const targetRowId = `row_${index}`;
 
           deseleccionarTodo();
 
-          // Resaltar el elemento gráfico seleccionado
           node.style.outline = "3px solid #2980b9";
           node.style.outlineOffset = "4px";
 
-          // Buscar la fila correspondiente en la tabla HTML, seleccionarla y hacer scroll [cite: 117]
           const targetRow = document.querySelector(`[data-row-id="${targetRowId}"]`);
           if (targetRow) {
             targetRow.classList.add('selected');
             targetRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
           }
         });
+
+        // Evento Doble Clic
+        node.addEventListener('dblclick', function(e) {
+          e.preventDefault();
+          const sigla = node.getAttribute('v:sigla') || 'N/A';
+          const nombre = node.getAttribute('v:name') || 'N/A';
+          const semestre = node.getAttribute('v:semestre') || 'N/A';
+          const creditos = node.getAttribute('v:creditos') || 'N/A';
+          const horas = node.getAttribute('v:horas') || 'N/A';
+          const area = node.getAttribute('v:area') || 'N/A';
+
+          alert(`DETALLE DEL CURSO\n\n` +
+                `• Asignatura: ${nombre} (${sigla})\n` +
+                `• Bloque Académico: Semestre ${semestre}\n` +
+                `• Créditos: ${creditos}\n` +
+                `• Horas Lectivas: ${horas} horas\n` +
+                `• Área Académica: ${area}`);
+        }); 
+      }); 
+
+
+      const buscador = document.getElementById('buscador-odviz');
+      if (buscador) {
+        buscador.addEventListener('input', function() {
+          const textoFiltro = this.value.toLowerCase();
+          const filas = document.querySelectorAll('#table-body tr[data-row-id]');
+          
+          filas.forEach(fila => {
+            const contenidoFila = fila.textContent.toLowerCase();
+            if (contenidoFila.includes(textoFiltro)) {
+              fila.style.display = ''; 
+            } else {
+              fila.style.display = 'none'; 
+            }
+          });
+        });
+      }
+
+      const filterObserver = new MutationObserver(() => {
+        const rows = document.querySelectorAll('#table-body tr[data-row-id]');
+        rows.forEach(row => {
+          const rowId = row.getAttribute('data-row-id');
+          const index = rowId.split('_')[1];
+          const svgNode = svgDoc.getElementById(`node_link_${index}`);
+          
+          if (svgNode) {
+            if (window.getComputedStyle(row).display === 'none') {
+              svgNode.style.display = 'none';
+            } else {
+              svgNode.style.display = '';
+            }
+          }
+        });
+
+        // B. Ocultar los enlaces (flechas)
+        const links = svgDoc.querySelectorAll('.edge-requisito, .edge-correquisito');
+        links.forEach(link => {
+          const fuente = link.getAttribute('data-fuente');
+          const destino = link.getAttribute('data-destino');
+          
+          let nodoFuenteVisible = false;
+          let nodoDestinoVisible = false;
+
+          const todosLosNodos = svgDoc.querySelectorAll('.curso-node');
+          todosLosNodos.forEach(n => {
+            if (n.getAttribute('v:sigla') === fuente) {
+              nodoFuenteVisible = (n.style.display !== 'none');
+            }
+            if (n.getAttribute('v:sigla') === destino) {
+              nodoDestinoVisible = (n.style.display !== 'none');
+            }
+          });
+          
+          // Ocultamos la flecha si alguno no está visible (o si no tienen atributo)
+          if (!nodoFuenteVisible || !nodoDestinoVisible) {
+            link.style.display = 'none'; 
+          } else {
+            link.style.display = ''; 
+          }
+        });
       });
 
+      const tableBody = document.getElementById('table-body');
+      if (tableBody) {
+        filterObserver.observe(tableBody, { attributes: true, subtree: true, attributeFilter: ['style', 'class'] });
+      }
+
       function deseleccionarTodo() {
-        // Remover clases de selección en la tabla
         document.querySelectorAll('.data-table tr').forEach(r => r.classList.remove('selected'));
-        // Limpiar los contornos de selección activos en el SVG
         cursoNodes.forEach(n => n.style.outline = "none");
       }
     });
