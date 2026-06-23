@@ -1,9 +1,9 @@
-{#Plantilla proyecto 03 Rafael - Otto Visualizacion de informacion#}
-{% set margin = obj("top", 100, "right", 100, "bottom", 80, "left", 140) %}
-{% set width = 1200 - margin.left - margin.right %}
-{% set height = 700 - margin.top - margin.bottom %}
+{# Proyecto 03 Visualizacion de informacion Rafael - Otto #}
+{% set margin = obj("top", 120, "right", 100, "bottom", 120, "left", 180) %}
+{% set width = 1600 - margin.left - margin.right %}
+{% set height = 950 - margin.top - margin.bottom %}
 
-{#Contar semestres maximo#}
+{# Calcula los semestres #}
 {% set max_semestre = 1 %}
 {% for n in nodos %}
   {% if n.semestre > max_semestre %}
@@ -11,11 +11,19 @@
   {% endif %}
 {% endfor %}
 
-{#Dimensiones#}
+{# Ve las areas para calcular los colores #}
+{% set lista_areas = "" %}
+{% for n in nodos %}
+  {% if not (n.area in lista_areas) %}
+    {% set lista_areas = lista_areas + n.area + "," %}
+  {% endif %}
+{% endfor %}
+
 {% set max_semestre_plus = max_semestre + 2 %}
 {% set dx = width / max_semestre_plus %}
-{% set dy = height / 6 %}
-{% set y_offset = 40 %}
+{% set dy = 110 %} 
+
+{% set y_offset = -40 %}
 
 <svg width="{{ width + margin.left + margin.right }}" 
      height="{{ height + margin.top + margin.bottom }}"
@@ -29,18 +37,17 @@
     .label-sigla { font-family: 'Segoe UI', Helvetica, sans-serif; font-weight: bold; font-size: 11px; fill: #ffffff; text-anchor: middle; pointer-events: none; }
     .node-container { display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; padding: 2px; pointer-events: none; }
     .label-html-nombre { font-family: 'Segoe UI', Helvetica, sans-serif; font-size: 10px; color: #2c3e50; font-weight: 600; line-height: 1.1; word-wrap: break-word; }
-    .edge-requisito { stroke: #34495e; stroke-width: 2.5px; fill: none; }
-    .edge-correquisito { stroke: #e74c3c; stroke-width: 2px; stroke-dasharray: 5,4; fill: none; }
-    .axis-text { font-family: 'Segoe UI', Helvetica, sans-serif; font-size: 12px; fill: #95a5a6; font-weight: bold; }
+    .edge-requisito { stroke: #34495e; stroke-width: 2.5px; fill: none; transition: stroke 0.2s; }
+    .edge-correquisito { stroke: #e74c3c; stroke-width: 2px; stroke-dasharray: 5,4; fill: none; transition: stroke 0.2s; }
+    .axis-text { font-family: 'Segoe UI', Helvetica, sans-serif; font-size: 13px; fill: #7f8c8d; font-weight: bold; }
     .grid-line { stroke: #ecf0f1; stroke-width: 1px; stroke-dasharray: 2,2; }
   </style>
 
   <defs>
-    {# Flecas de requisitos#}
+    {# Marcar las flechas #}
     <marker id="arrow-req" viewBox="0 0 10 10" refX="32" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#34495e" />
     </marker>
-    {#Flechas de corrquisitos#}
     <marker id="arrow-correq" viewBox="0 0 10 10" refX="32" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#e74c3c" />
     </marker>
@@ -48,102 +55,130 @@
 
   <g transform="translate({{ margin.left }},{{ margin.top }})">
     
-    {#Lineas verticales para identificar los semestres#}
+    {# Lineas para las columnas de semestrs#}
     {% for i in range(max_semestre_plus) %}
       {% if i > 0 %}
         <line x1="{{ i * dx }}" y1="0" x2="{{ i * dx }}" y2="{{ height }}" class="grid-line" />
       {% endif %}
     {% endfor %}
 
-    {# Enlaces#}
+    {# marcar las lineas #}
     <g id="links-group">
       {% for enlace in enlaces %}
         
+        {# calcula el origen #}
         {% set x1 = 0 %}{% set y1 = 0 %}
         {% for n in nodos %}
           {% if n.sigla == enlace.fuente %}
             {% set x1 = (n.semestre + 1) * dx %}
             
-            {% set primer_nodo_idx = 1 %}
-            {% set encontrado_origen = false %}
-            {% for buscador in nodos %}
-              {% if not encontrado_origen %}
-                {% if buscador.area == n.area %}
-                  {% set primer_nodo_idx = loop.index %}
-                  {% set encontrado_origen = true %}
+            {% set index_o = 1 %}
+            {% set romper_o = false %}
+            {% for c_o in nodos %}
+              {% if not romper_o %}
+                {% if c_o.sigla == n.sigla %}
+                  {% set romper_o = true %}
+                {% else if c_o.semestre == n.semestre %}
+                  {% set index_o = index_o + 1 %}
                 {% endif %}
               {% endif %}
             {% endfor %}
-            {% set y1 = (primer_nodo_idx * dy) + y_offset %}
+            {% set y1 = (index_o * dy) + y_offset %}
           {% endif %}
         {% endfor %}
 
+        {# Calculates el destino #}
         {% set x2 = 0 %}{% set y2 = 0 %}
         {% for n in nodos %}
           {% if n.sigla == enlace.destino %}
             {% set x2 = (n.semestre + 1) * dx %}
             
-            {% set primer_nodo_dest_idx = 1 %}
-            {% set encontrado_destino = false %}
-            {% for buscador in nodos %}
-              {% if not encontrado_destino %}
-                {% if buscador.area == n.area %}
-                  {% set primer_nodo_dest_idx = loop.index %}
-                  {% set encontrado_destino = true %}
+            {% set index_d = 1 %}
+            {% set romper_d = false %}
+            {% for c_d in nodos %}
+              {% if not romper_d %}
+                {% if c_d.sigla == n.sigla %}
+                  {% set romper_d = true %}
+                {% else if c_d.semestre == n.semestre %}
+                  {% set index_d = index_d + 1 %}
                 {% endif %}
               {% endif %}
             {% endfor %}
-            {% set y2 = (primer_nodo_dest_idx * dy) + y_offset %}
+            {% set y2 = (index_d * dy) + y_offset %}
           {% endif %}
         {% endfor %}
 
         {% if x1 > 0 and x2 > 0 %}
           {% if enlace.tipo == "requisito" %}
-            <path d="M {{ x1 }} {{ y1 }} L {{ x2 }} {{ y2 }}" class="edge-requisito" marker-end="url(#arrow-req)" data-fuente="{{ enlace.fuente }}" data-destino="{{ enlace.destino }}" />
+            <path id="edge_{{ enlace.fuente }}_{{ enlace.destino }}" 
+                  d="M {{ x1 }} {{ y1 }} L {{ x2 }} {{ y2 }}" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="{{ enlace.fuente }}"
+                  v:destino="{{ enlace.destino }}" />
           {% else %}
-            <path d="M {{ x1 }} {{ y1 }} L {{ x2 }} {{ y2 }}" class="edge-correquisito" marker-end="url(#arrow-correq)" data-fuente="{{ enlace.fuente }}" data-destino="{{ enlace.destino }}" />
+            <path id="edge_{{ enlace.fuente }}_{{ enlace.destino }}" 
+                  d="M {{ x1 }} {{ y1 }} L {{ x2 }} {{ y2 }}" 
+                  class="edge-correquisito" 
+                  marker-end="url(#arrow-correq)"
+                  v:fuente="{{ enlace.fuente }}"
+                  v:destino="{{ enlace.destino }}" />
           {% endif %}
         {% endif %}
 
       {% endfor %}
     </g>
 
-    {# Nodos #}
+    {# Nodos de form vertical#}
     <g id="nodes-group">
       {% for nodo in nodos %}
         
         {% set cx = (nodo.semestre + 1) * dx %}
         
-        {% set id_fila = 1 %}
-        {% set encontrado_nodo = false %}
-        {% for buscador in nodos %}
-          {% if not encontrado_nodo %}
-            {% if buscador.area == nodo.area %}
-              {% set id_fila = loop.index %}
-              {% set encontrado_nodo = true %}
+        {% set index_n = 1 %}
+        {% set romper_n = false %}
+        {% for c_n in nodos %}
+          {% if not romper_n %}
+            {% if c_n.sigla == nodo.sigla %}
+              {% set romper_n = true %}
+            {% else if c_n.semestre == nodo.semestre %}
+              {% set index_n = index_n + 1 %}
             {% endif %}
           {% endif %}
         {% endfor %}
-        {% set cy = (id_fila * dy) + y_offset %}
+        {% set cy = (index_n * dy) + y_offset %}
 
-        {# Paletas de color #}
+        {# Asigna el color #}
+        {% set areas_vistas_c = "" %}
+        {% set idx_color = 1 %}
+        {% for temp in nodos %}
+          {% if not (temp.area in areas_vistas_c) %}
+            {% if temp.area == nodo.area %}
+              {% set idx_color = idx_color %}
+            {% else %}
+              {% if not (nodo.area in areas_vistas_c) %}
+                {% set idx_color = idx_color + 1 %}
+              {% endif %}
+            {% endif %}
+            {% set areas_vistas_c = areas_vistas_c + temp.area + "," %}
+          {% endif %}
+        {% endfor %}
+
         {% set color = "#7f8c8d" %}
-        {% set color_modulo = id_fila % 7 %}
+        {% set color_modulo = idx_color % 6 %}
         {% if color_modulo == 1 %}{% set color = "#1b4f72" %}
-        {% else if color_modulo == 2 %}{% set color = "#27ae60" %}
-        {% else if color_modulo == 3 %}{% set color = "#8e44ad" %}
-        {% else if color_modulo == 4 %}{% set color = "#d35400" %}
+        {% else if color_modulo == 2 %}{% set color = "#d35400" %}
+        {% else if color_modulo == 3 %}{% set color = "#27ae60" %}
+        {% else if color_modulo == 4 %}{% set color = "#8e44ad" %}
         {% else if color_modulo == 5 %}{% set color = "#16a085" %}
-        {% else if color_modulo == 6 %}{% set color = "#f39c12" %}
-        {% else %}{% set color = "#c0392b" %}{% endif %}
+        {% else %}{% set color = "#f39c12" %}{% endif %}
 
-        {# Escalado basado en creditos #}
+        {# Radio basado en creditos #}
         {% set r_node = 24 %}
         {% if nodo.creditos == 3 %}{% set r_node = 24 %}
         {% else if nodo.creditos == 4 %}{% set r_node = 28 %}
         {% else if nodo.creditos >= 5 %}{% set r_node = 32 %}{% endif %}
 
-        {# Dependencia #}
         {% set req_list = "" %}
         {% set correq_list = "" %}
         {% for e in enlaces %}
@@ -156,7 +191,6 @@
           {% endif %}
         {% endfor %}
 
-        {# Atributos ODViz #}
         <g class="curso-node" id="node_link_{{ loop.index }}" transform="translate({{ cx }},{{ cy }})"
            v:name="{{ nodo.nombre }}" 
            v:sigla="{{ nodo.sigla }}" 
@@ -177,7 +211,7 @@
 
           <text y="4" class="label-sigla">{{ nodo.sigla }}</text>
           
-          <foreignObject x="-55" y="{{ r_node + 6 }}" width="110" height="50">
+          <foreignObject x="-60" y="{{ r_node + 6 }}" width="120" height="60">
             <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
               <span class="label-html-nombre">{{ nodo.nombre }}</span>
             </div>
@@ -187,46 +221,13 @@
       {% endfor %}
     </g>
 
-    {# numero del semestre #}
-    {% set max_bloques_limite = max_semestre %}
+    {# encabezados #}
+    {% set max_bloques_limite = max_semestre + 1 %}
     {% for i in range(max_bloques_limite) %}
       {% if i > 0 %}
-        <text x="{{ (i + 1) * dx }}" y="-35" text-anchor="middle" class="axis-text">Bloque {{ i }}</text>
+        <text x="{{ (i + 1) * dx }}" y="-45" text-anchor="middle" class="axis-text">Bloque {{ i }}</text>
       {% endif %}
     {% endfor %}
-
-    {# Nombres de las ramas #}
-    <g id="labels-ramas">
-      {% for n_lbl in nodos %}
-        
-        {% set primer_coincidente_idx = 0 %}
-        {% set encontrado_lbl = false %}
-        {% for buscador in nodos %}
-          {% if not encontrado_lbl %}
-            {% if buscador.area == n_lbl.area %}
-              {% set primer_coincidente_idx = loop.index %}
-              {% set encontrado_lbl = true %}
-            {% endif %}
-          {% endif %}
-        {% endfor %}
-        
-        {% if primer_coincidente_idx == loop.index %}
-          {% set lbl_color = "#7f8c8d" %}
-          {% set color_lbl_mod = loop.index % 7 %}
-          {% if color_lbl_mod == 1 %}{% set lbl_color = "#1b4f72" %}
-          {% else if color_lbl_mod == 2 %}{% set lbl_color = "#27ae60" %}
-          {% else if color_lbl_mod == 3 %}{% set lbl_color = "#8e44ad" %}
-          {% else if color_lbl_mod == 4 %}{% set lbl_color = "#d35400" %}
-          {% else if color_lbl_mod == 5 %}{% set lbl_color = "#16a085" %}
-          {% else if color_lbl_mod == 6 %}{% set lbl_color = "#f39c12" %}
-          {% else %}{% set lbl_color = "#c0392b" %}
-          {% endif %}
-          
-          <text x="10" y="{{ (loop.index * dy) + y_offset + 4 }}" text-anchor="start" class="axis-text" style="fill: {{ lbl_color }}; font-size: 11px;">{{ n_lbl.area }}</text>
-        {% endif %}
-        
-      {% endfor %}
-    </g>
 
   </g>
 

@@ -2,8 +2,9 @@
 
 
 
-<svg width="1200" 
-     height="700"
+
+<svg width="1600" 
+     height="950"
      style="background-color: #fafafa;"
      xmlns="http://www.w3.org/2000/svg"
      xmlns:v="https://arce.github.io/odviz">
@@ -14,9 +15,9 @@
     .label-sigla { font-family: 'Segoe UI', Helvetica, sans-serif; font-weight: bold; font-size: 11px; fill: #ffffff; text-anchor: middle; pointer-events: none; }
     .node-container { display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; padding: 2px; pointer-events: none; }
     .label-html-nombre { font-family: 'Segoe UI', Helvetica, sans-serif; font-size: 10px; color: #2c3e50; font-weight: 600; line-height: 1.1; word-wrap: break-word; }
-    .edge-requisito { stroke: #34495e; stroke-width: 2.5px; fill: none; }
-    .edge-correquisito { stroke: #e74c3c; stroke-width: 2px; stroke-dasharray: 5,4; fill: none; }
-    .axis-text { font-family: 'Segoe UI', Helvetica, sans-serif; font-size: 12px; fill: #95a5a6; font-weight: bold; }
+    .edge-requisito { stroke: #34495e; stroke-width: 2.5px; fill: none; transition: stroke 0.2s; }
+    .edge-correquisito { stroke: #e74c3c; stroke-width: 2px; stroke-dasharray: 5,4; fill: none; transition: stroke 0.2s; }
+    .axis-text { font-family: 'Segoe UI', Helvetica, sans-serif; font-size: 13px; fill: #7f8c8d; font-weight: bold; }
     .grid-line { stroke: #ecf0f1; stroke-width: 1px; stroke-dasharray: 2,2; }
   </style>
 
@@ -29,13 +30,19 @@
     </marker>
   </defs>
 
-  <g transform="translate(140,100)">
+  <g transform="translate(180,120)">
     
-        <line x1="160.0" y1="0" x2="160.0" y2="520" class="grid-line" />
-        <line x1="320.0" y1="0" x2="320.0" y2="520" class="grid-line" />
-        <line x1="480.0" y1="0" x2="480.0" y2="520" class="grid-line" />
-        <line x1="640.0" y1="0" x2="640.0" y2="520" class="grid-line" />
-        <line x1="800.0" y1="0" x2="800.0" y2="520" class="grid-line" />
+        <line x1="110.0" y1="0" x2="110.0" y2="710" class="grid-line" />
+        <line x1="220.0" y1="0" x2="220.0" y2="710" class="grid-line" />
+        <line x1="330.0" y1="0" x2="330.0" y2="710" class="grid-line" />
+        <line x1="440.0" y1="0" x2="440.0" y2="710" class="grid-line" />
+        <line x1="550.0" y1="0" x2="550.0" y2="710" class="grid-line" />
+        <line x1="660.0" y1="0" x2="660.0" y2="710" class="grid-line" />
+        <line x1="770.0" y1="0" x2="770.0" y2="710" class="grid-line" />
+        <line x1="880.0" y1="0" x2="880.0" y2="710" class="grid-line" />
+        <line x1="990.0" y1="0" x2="990.0" y2="710" class="grid-line" />
+        <line x1="1100.0" y1="0" x2="1100.0" y2="710" class="grid-line" />
+        <line x1="1210.0" y1="0" x2="1210.0" y2="710" class="grid-line" />
 
     <g id="links-group">
         
@@ -43,42 +50,744 @@
 
             
 
-            <path d="M 320.0 40.0 L 480.0 40.0" class="edge-requisito" marker-end="url(#arrow-req)" />
+            <path id="edge_CI1106_CI1107" 
+                  d="M 220.0 70 L 330.0 70" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="CI1106"
+                  v:destino="CI1107" />
 
         
             
 
             
 
-            <path d="M 480.0 40.0 L 640.0 40.0" class="edge-requisito" marker-end="url(#arrow-req)" />
+            <path id="edge_MA1102_FI1201" 
+                  d="M 330.0 730 L 330.0 290" 
+                  class="edge-correquisito" 
+                  marker-end="url(#arrow-correq)"
+                  v:fuente="MA1102"
+                  v:destino="FI1201" />
 
         
             
 
             
 
-            <path d="M 320.0 300.0 L 480.0 300.0" class="edge-requisito" marker-end="url(#arrow-req)" />
+            <path id="edge_ID1101_ID1104" 
+                  d="M 220.0 290 L 330.0 400" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID1101"
+                  v:destino="ID1104" />
 
         
             
 
             
 
-            <path d="M 480.0 300.0 L 640.0 300.0" class="edge-requisito" marker-end="url(#arrow-req)" />
+            <path id="edge_ID1103_ID1104" 
+                  d="M 220.0 400 L 330.0 400" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID1103"
+                  v:destino="ID1104" />
 
         
             
 
             
 
-            <path d="M 640.0 40.0 L 800.0 473.33333333333337" class="edge-requisito" marker-end="url(#arrow-req)" />
+            <path id="edge_ID1118_ID1119" 
+                  d="M 220.0 510 L 330.0 510" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID1118"
+                  v:destino="ID1119" />
 
         
             
 
             
 
-            <path d="M 320.0 300.0 L 320.0 40.0" class="edge-correquisito" marker-end="url(#arrow-correq)" />
+            <path id="edge_ID1205_ID1206" 
+                  d="M 220.0 620 L 330.0 620" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID1205"
+                  v:destino="ID1206" />
+
+        
+            
+
+            
+
+            <path id="edge_MA0101_MA1102" 
+                  d="M 220.0 730 L 330.0 730" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="MA0101"
+                  v:destino="MA1102" />
+
+        
+            
+
+            
+
+            <path id="edge_FI1101_FI2103" 
+                  d="M 330.0 180 L 440.0 70" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="FI1101"
+                  v:destino="FI2103" />
+
+        
+            
+
+            
+
+            <path id="edge_MA1102_FI2103" 
+                  d="M 330.0 730 L 440.0 70" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="MA1102"
+                  v:destino="FI2103" />
+
+        
+            
+
+            
+
+            <path id="edge_ID1119_ID2120" 
+                  d="M 330.0 510 L 440.0 180" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID1119"
+                  v:destino="ID2120" />
+
+        
+            
+
+            
+
+            <path id="edge_ID1206_ID2207" 
+                  d="M 330.0 620 L 440.0 290" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID1206"
+                  v:destino="ID2207" />
+
+        
+            
+
+            
+
+            <path id="edge_FI1101_ID2301" 
+                  d="M 330.0 180 L 440.0 400" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="FI1101"
+                  v:destino="ID2301" />
+
+        
+            
+
+            
+
+            <path id="edge_ID1104_ID2401" 
+                  d="M 330.0 400 L 440.0 510" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID1104"
+                  v:destino="ID2401" />
+
+        
+            
+
+            
+
+            <path id="edge_ID2207_ID2107" 
+                  d="M 440.0 290 L 550.0 180" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID2207"
+                  v:destino="ID2107" />
+
+        
+            
+
+            
+
+            <path id="edge_ID2401_ID2107" 
+                  d="M 440.0 510 L 550.0 180" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID2401"
+                  v:destino="ID2107" />
+
+        
+            
+
+            
+
+            <path id="edge_ID2108_ID2107" 
+                  d="M 550.0 290 L 550.0 180" 
+                  class="edge-correquisito" 
+                  marker-end="url(#arrow-correq)"
+                  v:fuente="ID2108"
+                  v:destino="ID2107" />
+
+        
+            
+
+            
+
+            <path id="edge_ID23302_ID2107" 
+                  d="M 550.0 400 L 550.0 180" 
+                  class="edge-correquisito" 
+                  marker-end="url(#arrow-correq)"
+                  v:fuente="ID23302"
+                  v:destino="ID2107" />
+
+        
+            
+
+            
+
+            <path id="edge_ID1104_ID2108" 
+                  d="M 330.0 400 L 550.0 290" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID1104"
+                  v:destino="ID2108" />
+
+        
+            
+
+            
+
+            <path id="edge_ID2120_ID2108" 
+                  d="M 440.0 180 L 550.0 290" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID2120"
+                  v:destino="ID2108" />
+
+        
+            
+
+            
+
+            <path id="edge_ID2301_ID23302" 
+                  d="M 440.0 400 L 550.0 400" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID2301"
+                  v:destino="ID23302" />
+
+        
+            
+
+            
+
+            <path id="edge_QU1902_ID23302" 
+                  d="M 440.0 620 L 550.0 400" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="QU1902"
+                  v:destino="ID23302" />
+
+        
+            
+
+            
+
+            <path id="edge_ID2301_MA2117" 
+                  d="M 440.0 400 L 550.0 510" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID2301"
+                  v:destino="MA2117" />
+
+        
+            
+
+            
+
+            <path id="edge_MA1102_MA2117" 
+                  d="M 330.0 730 L 550.0 510" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="MA1102"
+                  v:destino="MA2117" />
+
+        
+            
+
+            
+
+            <path id="edge_CI0200_CI1230" 
+                  d="M 110.0 70 L 660.0 70" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="CI0200"
+                  v:destino="CI1230" />
+
+        
+            
+
+            
+
+            <path id="edge_CI0202_CI1230" 
+                  d="M 110.0 180 L 660.0 70" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="CI0202"
+                  v:destino="CI1230" />
+
+        
+            
+
+            
+
+            <path id="edge_CA2125_ID2204" 
+                  d="M 550.0 70 L 660.0 180" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="CA2125"
+                  v:destino="ID2204" />
+
+        
+            
+
+            
+
+            <path id="edge_ID3109_ID3109" 
+                  d="M 660.0 290 L 660.0 290" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID3109"
+                  v:destino="ID3109" />
+
+        
+            
+
+            
+
+            <path id="edge_ID2107_ID3109" 
+                  d="M 550.0 180 L 660.0 290" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID2107"
+                  v:destino="ID3109" />
+
+        
+            
+
+            
+
+            <path id="edge_ID3110_ID3109" 
+                  d="M 660.0 400 L 660.0 290" 
+                  class="edge-correquisito" 
+                  marker-end="url(#arrow-correq)"
+                  v:fuente="ID3110"
+                  v:destino="ID3109" />
+
+        
+            
+
+            
+
+            <path id="edge_ID3303_ID3109" 
+                  d="M 660.0 510 L 660.0 290" 
+                  class="edge-correquisito" 
+                  marker-end="url(#arrow-correq)"
+                  v:fuente="ID3303"
+                  v:destino="ID3109" />
+
+        
+            
+
+            
+
+            <path id="edge_ID2108_ID3110" 
+                  d="M 550.0 290 L 660.0 400" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID2108"
+                  v:destino="ID3110" />
+
+        
+            
+
+            
+
+            <path id="edge_ID23302_ID3303" 
+                  d="M 550.0 400 L 660.0 510" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID23302"
+                  v:destino="ID3303" />
+
+        
+            
+
+            
+
+            <path id="edge_MA1102_PI2608" 
+                  d="M 330.0 730 L 660.0 620" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="MA1102"
+                  v:destino="PI2608" />
+
+        
+            
+
+            
+
+            <path id="edge_CI1230_CI1231" 
+                  d="M 660.0 70 L 770.0 70" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="CI1230"
+                  v:destino="CI1231" />
+
+        
+            
+
+            
+
+            <path id="edge_ID2204_ID3111" 
+                  d="M 660.0 180 L 770.0 180" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID2204"
+                  v:destino="ID3111" />
+
+        
+            
+
+            
+
+            <path id="edge_ID3109_ID3111" 
+                  d="M 660.0 290 L 770.0 180" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID3109"
+                  v:destino="ID3111" />
+
+        
+            
+
+            
+
+            <path id="edge_ID3110_ID3112" 
+                  d="M 660.0 400 L 770.0 290" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID3110"
+                  v:destino="ID3112" />
+
+        
+            
+
+            
+
+            <path id="edge_ID3304_ID3112" 
+                  d="M 770.0 620 L 770.0 290" 
+                  class="edge-correquisito" 
+                  marker-end="url(#arrow-correq)"
+                  v:fuente="ID3304"
+                  v:destino="ID3112" />
+
+        
+            
+
+            
+
+            <path id="edge_ID2107_ID3113" 
+                  d="M 550.0 180 L 770.0 400" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID2107"
+                  v:destino="ID3113" />
+
+        
+            
+
+            
+
+            <path id="edge_ID2120_ID3205" 
+                  d="M 440.0 180 L 770.0 510" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID2120"
+                  v:destino="ID3205" />
+
+        
+            
+
+            
+
+            <path id="edge_ID2108_ID3304" 
+                  d="M 550.0 290 L 770.0 620" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID2108"
+                  v:destino="ID3304" />
+
+        
+            
+
+            
+
+            <path id="edge_PI2608_AE3414" 
+                  d="M 660.0 620 L 880.0 70" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="PI2608"
+                  v:destino="AE3414" />
+
+        
+            
+
+            
+
+            <path id="edge_PI2608_AE5121" 
+                  d="M 660.0 620 L 880.0 180" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="PI2608"
+                  v:destino="AE5121" />
+
+        
+            
+
+            
+
+            <path id="edge_CS1502_CS3401" 
+                  d="M 220.0 180 L 880.0 290" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="CS1502"
+                  v:destino="CS3401" />
+
+        
+            
+
+            
+
+            <path id="edge_ID3111_ID4501" 
+                  d="M 770.0 180 L 880.0 510" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID3111"
+                  v:destino="ID4501" />
+
+        
+            
+
+            
+
+            <path id="edge_ID3205_ID4501" 
+                  d="M 770.0 510 L 880.0 510" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID3205"
+                  v:destino="ID4501" />
+
+        
+            
+
+            
+
+            <path id="edge_ID2204_ID4601" 
+                  d="M 660.0 180 L 880.0 620" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID2204"
+                  v:destino="ID4601" />
+
+        
+            
+
+            
+
+            <path id="edge_ID3112_ID4601" 
+                  d="M 770.0 290 L 880.0 620" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID3112"
+                  v:destino="ID4601" />
+
+        
+            
+
+            
+
+            <path id="edge_CS3401_CS4402" 
+                  d="M 880.0 290 L 990.0 70" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="CS3401"
+                  v:destino="CS4402" />
+
+        
+            
+
+            
+
+            <path id="edge_ID4501_ID4503" 
+                  d="M 880.0 510 L 990.0 180" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID4501"
+                  v:destino="ID4503" />
+
+        
+            
+
+            
+
+            <path id="edge_ID4601_ID4503" 
+                  d="M 880.0 620 L 990.0 180" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID4601"
+                  v:destino="ID4503" />
+
+        
+            
+
+            
+
+            <path id="edge_CA2125_CE5507" 
+                  d="M 550.0 70 L 1100.0 70" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="CA2125"
+                  v:destino="CE5507" />
+
+        
+            
+
+            
+
+            <path id="edge_ID3112_ID5604" 
+                  d="M 770.0 290 L 1100.0 290" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID3112"
+                  v:destino="ID5604" />
+
+        
+            
+
+            
+
+            <path id="edge_ID4503_ID5605" 
+                  d="M 990.0 180 L 1100.0 400" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID4503"
+                  v:destino="ID5605" />
+
+        
+            
+
+            
+
+            <path id="edge_ID4503_ID5606" 
+                  d="M 990.0 180 L 1100.0 510" 
+                  class="edge-correquisito" 
+                  marker-end="url(#arrow-correq)"
+                  v:fuente="ID4503"
+                  v:destino="ID5606" />
+
+        
+            
+
+            
+
+            <path id="edge_ID5115_ID5114" 
+                  d="M 1210.0 180 L 1210.0 70" 
+                  class="edge-correquisito" 
+                  marker-end="url(#arrow-correq)"
+                  v:fuente="ID5115"
+                  v:destino="ID5114" />
+
+        
+            
+
+            
+
+            <path id="edge_ID5605_ID5115" 
+                  d="M 1100.0 400 L 1210.0 180" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID5605"
+                  v:destino="ID5115" />
+
+        
+            
+
+            
+
+            <path id="edge_ID5114_ID5115" 
+                  d="M 1210.0 70 L 1210.0 180" 
+                  class="edge-correquisito" 
+                  marker-end="url(#arrow-correq)"
+                  v:fuente="ID5114"
+                  v:destino="ID5115" />
+
+        
+            
+
+            
+
+            <path id="edge_ID5604_ID5516" 
+                  d="M 1100.0 290 L 1210.0 400" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID5604"
+                  v:destino="ID5516" />
+
+        
+            
+
+            
+
+            <path id="edge_ID5516_ID5602" 
+                  d="M 1210.0 400 L 1210.0 510" 
+                  class="edge-correquisito" 
+                  marker-end="url(#arrow-correq)"
+                  v:fuente="ID5516"
+                  v:destino="ID5602" />
+
+        
+            
+
+            
+
+            <path id="edge_ID5605_ID5611" 
+                  d="M 1100.0 400 L 1210.0 620" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID5605"
+                  v:destino="ID5611" />
+
+        
+            
+
+            
+
+            <path id="edge_ID5606_ID5611" 
+                  d="M 1100.0 510 L 1210.0 620" 
+                  class="edge-requisito" 
+                  marker-end="url(#arrow-req)"
+                  v:fuente="ID5606"
+                  v:destino="ID5611" />
 
     </g>
 
@@ -89,25 +798,26 @@
 
 
 
-        <g class="curso-node" id="node_link_0" transform="translate(320.0,40.0)"
-           v:name="Fundamentos de Programación" 
-           v:sigla="FP101" 
-           v:semestre="1" 
-           v:creditos="4" 
-           v:horas="6" 
-           v:area="Programación"
+
+        <g class="curso-node" id="node_link_0" transform="translate(110.0,70)"
+           v:name="Examen Diagnóstico" 
+           v:sigla="CI0200" 
+           v:semestre="0" 
+           v:creditos="0" 
+           v:horas="0" 
+           v:area="Otros"
            v:requisitos=""
-           v:correquisitos="MAT101 ">
+           v:correquisitos="">
           
           <a href="#row_0">
-              <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#c0392b" stroke="#ffffff" stroke-width="2.5"/>
+              <circle cx="0" cy="0" r="24" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
           </a>
 
-          <text y="4" class="label-sigla">FP101</text>
+          <text y="4" class="label-sigla">CI0200</text>
           
-          <foreignObject x="-55" y="34" width="110" height="50">
+          <foreignObject x="-60" y="30" width="120" height="60">
             <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
-              <span class="label-html-nombre">Fundamentos de Programación</span>
+              <span class="label-html-nombre">Examen Diagnóstico</span>
             </div>
           </foreignObject>
         </g>
@@ -118,25 +828,26 @@
 
 
 
-        <g class="curso-node" id="node_link_1" transform="translate(480.0,40.0)"
-           v:name="Programación Orientada a Objetos" 
-           v:sigla="POO202" 
-           v:semestre="2" 
-           v:creditos="4" 
-           v:horas="6" 
-           v:area="Programación"
-           v:requisitos="FP101 "
+
+        <g class="curso-node" id="node_link_1" transform="translate(110.0,180)"
+           v:name="Inglés Básico" 
+           v:sigla="CI0202" 
+           v:semestre="0" 
+           v:creditos="2" 
+           v:horas="3" 
+           v:area="Otros"
+           v:requisitos=""
            v:correquisitos="">
           
           <a href="#row_1">
-              <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#c0392b" stroke="#ffffff" stroke-width="2.5"/>
+              <circle cx="0" cy="0" r="24" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
           </a>
 
-          <text y="4" class="label-sigla">POO202</text>
+          <text y="4" class="label-sigla">CI0202</text>
           
-          <foreignObject x="-55" y="34" width="110" height="50">
+          <foreignObject x="-60" y="30" width="120" height="60">
             <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
-              <span class="label-html-nombre">Programación Orientada a Objetos</span>
+              <span class="label-html-nombre">Inglés Básico</span>
             </div>
           </foreignObject>
         </g>
@@ -147,25 +858,26 @@
 
 
 
-        <g class="curso-node" id="node_link_2" transform="translate(640.0,40.0)"
-           v:name="Estructuras de Datos" 
-           v:sigla="ED303" 
-           v:semestre="3" 
-           v:creditos="5" 
-           v:horas="8" 
-           v:area="Programación"
-           v:requisitos="POO202 "
+
+        <g class="curso-node" id="node_link_2" transform="translate(220.0,70)"
+           v:name="Comunicación Escrita" 
+           v:sigla="CI1106" 
+           v:semestre="1" 
+           v:creditos="2" 
+           v:horas="6" 
+           v:area="Otros"
+           v:requisitos=""
            v:correquisitos="">
           
           <a href="#row_2">
-              <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#c0392b" stroke="#ffffff" stroke-width="2.5"/>
+              <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#f39c12" stroke="#ffffff" stroke-width="2.5"/>
           </a>
 
-          <text y="4" class="label-sigla">ED303</text>
+          <text y="4" class="label-sigla">CI1106</text>
           
-          <foreignObject x="-55" y="38" width="110" height="50">
+          <foreignObject x="-60" y="30" width="120" height="60">
             <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
-              <span class="label-html-nombre">Estructuras de Datos</span>
+              <span class="label-html-nombre">Comunicación Escrita</span>
             </div>
           </foreignObject>
         </g>
@@ -176,25 +888,26 @@
 
 
 
-        <g class="curso-node" id="node_link_3" transform="translate(320.0,300.0)"
-           v:name="Cálculo Diferencial" 
-           v:sigla="MAT101" 
+
+        <g class="curso-node" id="node_link_3" transform="translate(220.0,180)"
+           v:name="Introducción A La Técnica Ciencia y Tecnología" 
+           v:sigla="CS1502" 
            v:semestre="1" 
-           v:creditos="4" 
-           v:horas="5" 
-           v:area="Matemáticas"
+           v:creditos="1" 
+           v:horas="2" 
+           v:area="Otros"
            v:requisitos=""
            v:correquisitos="">
           
           <a href="#row_3">
-              <circle cx="0" cy="0" r="28" fill="#8e44ad" stroke="#ffffff" stroke-width="2.5" />
+              <circle cx="0" cy="0" r="24" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
           </a>
 
-          <text y="4" class="label-sigla">MAT101</text>
+          <text y="4" class="label-sigla">CS1502</text>
           
-          <foreignObject x="-55" y="34" width="110" height="50">
+          <foreignObject x="-60" y="30" width="120" height="60">
             <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
-              <span class="label-html-nombre">Cálculo Diferencial</span>
+              <span class="label-html-nombre">Introducción A La Técnica Ciencia y Tecnología</span>
             </div>
           </foreignObject>
         </g>
@@ -205,25 +918,26 @@
 
 
 
-        <g class="curso-node" id="node_link_4" transform="translate(480.0,300.0)"
-           v:name="Cálculo Integral" 
-           v:sigla="MAT202" 
-           v:semestre="2" 
-           v:creditos="4" 
-           v:horas="5" 
-           v:area="Matemáticas"
-           v:requisitos="MAT101 "
+
+        <g class="curso-node" id="node_link_4" transform="translate(220.0,290)"
+           v:name="Análisis De Producto I" 
+           v:sigla="ID1101" 
+           v:semestre="1" 
+           v:creditos="2" 
+           v:horas="2" 
+           v:area="Comunicación Visual"
+           v:requisitos=""
            v:correquisitos="">
           
           <a href="#row_4">
-              <circle cx="0" cy="0" r="28" fill="#8e44ad" stroke="#ffffff" stroke-width="2.5" />
+              <circle cx="0" cy="0" r="24" fill="#1b4f72" stroke="#ffffff" stroke-width="2.5" />
           </a>
 
-          <text y="4" class="label-sigla">MAT202</text>
+          <text y="4" class="label-sigla">ID1101</text>
           
-          <foreignObject x="-55" y="34" width="110" height="50">
+          <foreignObject x="-60" y="30" width="120" height="60">
             <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
-              <span class="label-html-nombre">Cálculo Integral</span>
+              <span class="label-html-nombre">Análisis De Producto I</span>
             </div>
           </foreignObject>
         </g>
@@ -234,25 +948,26 @@
 
 
 
-        <g class="curso-node" id="node_link_5" transform="translate(800.0,473.33333333333337)"
-           v:name="Bases de Datos" 
-           v:sigla="BD404" 
-           v:semestre="4" 
-           v:creditos="4" 
-           v:horas="6" 
-           v:area="Bases de Datos"
-           v:requisitos="ED303 "
+
+        <g class="curso-node" id="node_link_5" transform="translate(220.0,400)"
+           v:name="Métodos De Desarrollo De Productos" 
+           v:sigla="ID1103" 
+           v:semestre="1" 
+           v:creditos="2" 
+           v:horas="2" 
+           v:area="Comunicación Visual"
+           v:requisitos=""
            v:correquisitos="">
           
           <a href="#row_5">
-              <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#16a085" stroke="#ffffff" stroke-width="2.5"/>
+              <circle cx="0" cy="0" r="24" fill="#1b4f72" stroke="#ffffff" stroke-width="2.5" />
           </a>
 
-          <text y="4" class="label-sigla">BD404</text>
+          <text y="4" class="label-sigla">ID1103</text>
           
-          <foreignObject x="-55" y="34" width="110" height="50">
+          <foreignObject x="-60" y="30" width="120" height="60">
             <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
-              <span class="label-html-nombre">Bases de Datos</span>
+              <span class="label-html-nombre">Métodos De Desarrollo De Productos</span>
             </div>
           </foreignObject>
         </g>
@@ -263,76 +978,1727 @@
 
 
 
-        <g class="curso-node" id="node_link_6" transform="translate(640.0,300.0)"
-           v:name="Álgebra Lineal" 
-           v:sigla="MAT303" 
-           v:semestre="3" 
+
+        <g class="curso-node" id="node_link_6" transform="translate(220.0,510)"
+           v:name="Fundamentos Del Diseńo" 
+           v:sigla="ID1118" 
+           v:semestre="1" 
            v:creditos="3" 
-           v:horas="4" 
-           v:area="Matemáticas"
-           v:requisitos="MAT202 "
+           v:horas="9" 
+           v:area="Comunicación Visual"
+           v:requisitos=""
            v:correquisitos="">
           
           <a href="#row_6">
+              <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#1b4f72" stroke="#ffffff" stroke-width="2.5"/>
+          </a>
+
+          <text y="4" class="label-sigla">ID1118</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Fundamentos Del Diseńo</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_7" transform="translate(220.0,620)"
+           v:name="Taller De Dibujo" 
+           v:sigla="ID1205" 
+           v:semestre="1" 
+           v:creditos="3" 
+           v:horas="9" 
+           v:area="Comunicación Visual"
+           v:requisitos=""
+           v:correquisitos="">
+          
+          <a href="#row_7">
+              <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#1b4f72" stroke="#ffffff" stroke-width="2.5"/>
+          </a>
+
+          <text y="4" class="label-sigla">ID1205</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Taller De Dibujo</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_8" transform="translate(220.0,730)"
+           v:name="Matemática General" 
+           v:sigla="MA0101" 
+           v:semestre="1" 
+           v:creditos="2" 
+           v:horas="5" 
+           v:area="Otros"
+           v:requisitos=""
+           v:correquisitos="">
+          
+          <a href="#row_8">
+              <circle cx="0" cy="0" r="24" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">MA0101</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Matemática General</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_9" transform="translate(330.0,70)"
+           v:name="Comunicación Oral" 
+           v:sigla="CI1107" 
+           v:semestre="2" 
+           v:creditos="1" 
+           v:horas="3" 
+           v:area="Otros"
+           v:requisitos="CI1106 "
+           v:correquisitos="">
+          
+          <a href="#row_9">
+              <circle cx="0" cy="0" r="24" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">CI1107</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Comunicación Oral</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_10" transform="translate(330.0,180)"
+           v:name="Física General I" 
+           v:sigla="FI1101" 
+           v:semestre="2" 
+           v:creditos="3" 
+           v:horas="4" 
+           v:area="Otros"
+           v:requisitos=""
+           v:correquisitos="">
+          
+          <a href="#row_10">
+              <circle cx="0" cy="0" r="24" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">FI1101</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Física General I</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_11" transform="translate(330.0,290)"
+           v:name="Laboratorio Física General I" 
+           v:sigla="FI1201" 
+           v:semestre="2" 
+           v:creditos="1" 
+           v:horas="2" 
+           v:area="Otros"
+           v:requisitos=""
+           v:correquisitos="MA1102 ">
+          
+          <a href="#row_11">
+              <circle cx="0" cy="0" r="24" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">FI1201</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Laboratorio Física General I</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_12" transform="translate(330.0,400)"
+           v:name="Análisis De Producto II" 
+           v:sigla="ID1104" 
+           v:semestre="2" 
+           v:creditos="2" 
+           v:horas="2" 
+           v:area="Comunicación Visual"
+           v:requisitos="ID1101 ID1103 "
+           v:correquisitos="">
+          
+          <a href="#row_12">
+              <circle cx="0" cy="0" r="24" fill="#1b4f72" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID1104</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Análisis De Producto II</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_13" transform="translate(330.0,510)"
+           v:name="Principios Del Diseńo" 
+           v:sigla="ID1119" 
+           v:semestre="2" 
+           v:creditos="2" 
+           v:horas="6" 
+           v:area="Comunicación Visual"
+           v:requisitos="ID1118 "
+           v:correquisitos="">
+          
+          <a href="#row_13">
+              <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#1b4f72" stroke="#ffffff" stroke-width="2.5"/>
+          </a>
+
+          <text y="4" class="label-sigla">ID1119</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Principios Del Diseńo</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_14" transform="translate(330.0,620)"
+           v:name="Modelado y Simulación" 
+           v:sigla="ID1206" 
+           v:semestre="2" 
+           v:creditos="3" 
+           v:horas="9" 
+           v:area="Comunicación Visual"
+           v:requisitos="ID1205 "
+           v:correquisitos="">
+          
+          <a href="#row_14">
+              <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#1b4f72" stroke="#ffffff" stroke-width="2.5"/>
+          </a>
+
+          <text y="4" class="label-sigla">ID1206</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Modelado y Simulación</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_15" transform="translate(330.0,730)"
+           v:name="Cálculo Diferencial E Integral" 
+           v:sigla="MA1102" 
+           v:semestre="2" 
+           v:creditos="4" 
+           v:horas="5" 
+           v:area="Otros"
+           v:requisitos="MA0101 "
+           v:correquisitos="">
+          
+          <a href="#row_15">
+              <circle cx="0" cy="0" r="28" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">MA1102</text>
+          
+          <foreignObject x="-60" y="34" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Cálculo Diferencial E Integral</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_16" transform="translate(440.0,70)"
+           v:name="Física General III" 
+           v:sigla="FI2103" 
+           v:semestre="3" 
+           v:creditos="3" 
+           v:horas="4" 
+           v:area="Otros"
+           v:requisitos="FI1101 MA1102 "
+           v:correquisitos="">
+          
+          <a href="#row_16">
+              <circle cx="0" cy="0" r="24" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">FI2103</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Física General III</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_17" transform="translate(440.0,180)"
+           v:name="Comunicación Visual" 
+           v:sigla="ID2120" 
+           v:semestre="3" 
+           v:creditos="3" 
+           v:horas="9" 
+           v:area="Comunicación Visual"
+           v:requisitos="ID1119 "
+           v:correquisitos="">
+          
+          <a href="#row_17">
+              <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#1b4f72" stroke="#ffffff" stroke-width="2.5"/>
+          </a>
+
+          <text y="4" class="label-sigla">ID2120</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Comunicación Visual</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_18" transform="translate(440.0,290)"
+           v:name="Análisis Del Espacio Tridimensional" 
+           v:sigla="ID2207" 
+           v:semestre="3" 
+           v:creditos="3" 
+           v:horas="9" 
+           v:area="Comunicación Visual"
+           v:requisitos="ID1206 "
+           v:correquisitos="">
+          
+          <a href="#row_18">
+              <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#1b4f72" stroke="#ffffff" stroke-width="2.5"/>
+          </a>
+
+          <text y="4" class="label-sigla">ID2207</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Análisis Del Espacio Tridimensional</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_19" transform="translate(440.0,400)"
+           v:name="Principios Estructurales" 
+           v:sigla="ID2301" 
+           v:semestre="3" 
+           v:creditos="2" 
+           v:horas="4" 
+           v:area="Desarrollo de Productos"
+           v:requisitos="FI1101 "
+           v:correquisitos="">
+          
+          <a href="#row_19">
               <circle cx="0" cy="0" r="24" fill="#8e44ad" stroke="#ffffff" stroke-width="2.5" />
           </a>
 
-          <text y="4" class="label-sigla">MAT303</text>
+          <text y="4" class="label-sigla">ID2301</text>
           
-          <foreignObject x="-55" y="30" width="110" height="50">
+          <foreignObject x="-60" y="30" width="120" height="60">
             <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
-              <span class="label-html-nombre">Álgebra Lineal</span>
+              <span class="label-html-nombre">Principios Estructurales</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_20" transform="translate(440.0,510)"
+           v:name="Ergonomía" 
+           v:sigla="ID2401" 
+           v:semestre="3" 
+           v:creditos="2" 
+           v:horas="3" 
+           v:area="Desarrollo de Productos"
+           v:requisitos="ID1104 "
+           v:correquisitos="">
+          
+          <a href="#row_20">
+              <circle cx="0" cy="0" r="24" fill="#8e44ad" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID2401</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Ergonomía</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_21" transform="translate(440.0,620)"
+           v:name="Fundamentos de Química" 
+           v:sigla="QU1902" 
+           v:semestre="3" 
+           v:creditos="4" 
+           v:horas="5" 
+           v:area="Otros"
+           v:requisitos=""
+           v:correquisitos="">
+          
+          <a href="#row_21">
+              <circle cx="0" cy="0" r="28" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">QU1902</text>
+          
+          <foreignObject x="-60" y="34" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Fundamentos de Química</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_22" transform="translate(550.0,70)"
+           v:name="Elementos de Computación" 
+           v:sigla="CA2125" 
+           v:semestre="4" 
+           v:creditos="3" 
+           v:horas="4" 
+           v:area="Otros"
+           v:requisitos=""
+           v:correquisitos="">
+          
+          <a href="#row_22">
+              <circle cx="0" cy="0" r="24" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">CA2125</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Elementos de Computación</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_23" transform="translate(550.0,180)"
+           v:name="Diseño I" 
+           v:sigla="ID2107" 
+           v:semestre="4" 
+           v:creditos="4" 
+           v:horas="3" 
+           v:area="Desarrollo de Productos"
+           v:requisitos="ID2207 ID2401 "
+           v:correquisitos="ID2108 ID23302 ">
+          
+          <a href="#row_23">
+              <circle cx="0" cy="0" r="28" fill="#8e44ad" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID2107</text>
+          
+          <foreignObject x="-60" y="34" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Diseño I</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_24" transform="translate(550.0,290)"
+           v:name="Diseńo II" 
+           v:sigla="ID2108" 
+           v:semestre="4" 
+           v:creditos="4" 
+           v:horas="3" 
+           v:area="Comunicación Visual"
+           v:requisitos="ID1104 ID2120 "
+           v:correquisitos="">
+          
+          <a href="#row_24">
+              <circle cx="0" cy="0" r="28" fill="#1b4f72" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID2108</text>
+          
+          <foreignObject x="-60" y="34" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Diseńo II</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_25" transform="translate(550.0,400)"
+           v:name="Procesos De Manufactura I" 
+           v:sigla="ID23302" 
+           v:semestre="4" 
+           v:creditos="2" 
+           v:horas="3" 
+           v:area="Desarrollo de Productos"
+           v:requisitos="ID2301 QU1902 "
+           v:correquisitos="">
+          
+          <a href="#row_25">
+              <circle cx="0" cy="0" r="24" fill="#8e44ad" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID23302</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Procesos De Manufactura I</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_26" transform="translate(550.0,510)"
+           v:name="Cálculo Y Geometría Analítica" 
+           v:sigla="MA2117" 
+           v:semestre="4" 
+           v:creditos="4" 
+           v:horas="4" 
+           v:area="Otros"
+           v:requisitos="ID2301 MA1102 "
+           v:correquisitos="">
+          
+          <a href="#row_26">
+              <circle cx="0" cy="0" r="28" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">MA2117</text>
+          
+          <foreignObject x="-60" y="34" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Cálculo Y Geometría Analítica</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_27" transform="translate(550.0,620)"
+           v:name="Actividad Cultural I" 
+           v:sigla="SE1100" 
+           v:semestre="4" 
+           v:creditos="0" 
+           v:horas="2" 
+           v:area="Otros"
+           v:requisitos=""
+           v:correquisitos="">
+          
+          <a href="#row_27">
+              <circle cx="0" cy="0" r="24" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">SE1100</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Actividad Cultural I</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_28" transform="translate(660.0,70)"
+           v:name="Inglés I" 
+           v:sigla="CI1230" 
+           v:semestre="5" 
+           v:creditos="2" 
+           v:horas="6" 
+           v:area="Otros"
+           v:requisitos="CI0200 CI0202 "
+           v:correquisitos="">
+          
+          <a href="#row_28">
+              <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#f39c12" stroke="#ffffff" stroke-width="2.5"/>
+          </a>
+
+          <text y="4" class="label-sigla">CI1230</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Inglés I</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_29" transform="translate(660.0,180)"
+           v:name="Herramientas Digitales Para Diseño" 
+           v:sigla="ID2204" 
+           v:semestre="5" 
+           v:creditos="2" 
+           v:horas="3" 
+           v:area="Desarrollo de Productos"
+           v:requisitos="CA2125 "
+           v:correquisitos="">
+          
+          <a href="#row_29">
+              <circle cx="0" cy="0" r="24" fill="#8e44ad" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID2204</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Herramientas Digitales Para Diseño</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_30" transform="translate(660.0,290)"
+           v:name="Diseño III" 
+           v:sigla="ID3109" 
+           v:semestre="5" 
+           v:creditos="4" 
+           v:horas="3" 
+           v:area="Desarrollo de Productos"
+           v:requisitos="ID3109 ID2107 "
+           v:correquisitos="ID3110 ID3303 ">
+          
+          <a href="#row_30">
+              <circle cx="0" cy="0" r="28" fill="#8e44ad" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID3109</text>
+          
+          <foreignObject x="-60" y="34" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Diseño III</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_31" transform="translate(660.0,400)"
+           v:name="Diseño IV" 
+           v:sigla="ID3110" 
+           v:semestre="5" 
+           v:creditos="4" 
+           v:horas="3" 
+           v:area="Comunicación Visual"
+           v:requisitos="ID2108 "
+           v:correquisitos="">
+          
+          <a href="#row_31">
+              <circle cx="0" cy="0" r="28" fill="#1b4f72" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID3110</text>
+          
+          <foreignObject x="-60" y="34" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Diseño IV</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_32" transform="translate(660.0,510)"
+           v:name="Procesos De Manufactura II" 
+           v:sigla="ID3303" 
+           v:semestre="5" 
+           v:creditos="2" 
+           v:horas="3" 
+           v:area="Desarrollo de Productos"
+           v:requisitos="ID23302 "
+           v:correquisitos="">
+          
+          <a href="#row_32">
+              <circle cx="0" cy="0" r="24" fill="#8e44ad" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID3303</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Procesos De Manufactura II</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_33" transform="translate(660.0,620)"
+           v:name="Análisis Estadístico" 
+           v:sigla="PI2608" 
+           v:semestre="5" 
+           v:creditos="3" 
+           v:horas="4" 
+           v:area="Otros"
+           v:requisitos="MA1102 "
+           v:correquisitos="">
+          
+          <a href="#row_33">
+              <circle cx="0" cy="0" r="24" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">PI2608</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Análisis Estadístico</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_34" transform="translate(660.0,730)"
+           v:name="Actividad Deportiva I" 
+           v:sigla="SE1200" 
+           v:semestre="5" 
+           v:creditos="0" 
+           v:horas="2" 
+           v:area="Otros"
+           v:requisitos=""
+           v:correquisitos="">
+          
+          <a href="#row_34">
+              <circle cx="0" cy="0" r="24" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">SE1200</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Actividad Deportiva I</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_35" transform="translate(770.0,70)"
+           v:name="Inglés II" 
+           v:sigla="CI1231" 
+           v:semestre="6" 
+           v:creditos="2" 
+           v:horas="3" 
+           v:area="Otros"
+           v:requisitos="CI1230 "
+           v:correquisitos="">
+          
+          <a href="#row_35">
+              <circle cx="0" cy="0" r="24" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">CI1231</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Inglés II</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_36" transform="translate(770.0,180)"
+           v:name="Diseño V" 
+           v:sigla="ID3111" 
+           v:semestre="6" 
+           v:creditos="4" 
+           v:horas="3" 
+           v:area="Desarrollo de Productos"
+           v:requisitos="ID2204 ID3109 "
+           v:correquisitos="">
+          
+          <a href="#row_36">
+              <circle cx="0" cy="0" r="28" fill="#8e44ad" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID3111</text>
+          
+          <foreignObject x="-60" y="34" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Diseño V</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_37" transform="translate(770.0,290)"
+           v:name="Diseño VI" 
+           v:sigla="ID3112" 
+           v:semestre="6" 
+           v:creditos="4" 
+           v:horas="3" 
+           v:area="Comunicación Visual"
+           v:requisitos="ID3110 "
+           v:correquisitos="ID3304 ">
+          
+          <a href="#row_37">
+              <circle cx="0" cy="0" r="28" fill="#1b4f72" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID3112</text>
+          
+          <foreignObject x="-60" y="34" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Diseño VI</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_38" transform="translate(770.0,400)"
+           v:name="Biónica y Eco-Diseño" 
+           v:sigla="ID3113" 
+           v:semestre="6" 
+           v:creditos="3" 
+           v:horas="3" 
+           v:area="Desarrollo de Productos"
+           v:requisitos="ID2107 "
+           v:correquisitos="">
+          
+          <a href="#row_38">
+              <circle cx="0" cy="0" r="24" fill="#8e44ad" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID3113</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Biónica y Eco-Diseño</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_39" transform="translate(770.0,510)"
+           v:name="Cultura Material" 
+           v:sigla="ID3205" 
+           v:semestre="6" 
+           v:creditos="3" 
+           v:horas="3" 
+           v:area="Comunicación Visual"
+           v:requisitos="ID2120 "
+           v:correquisitos="">
+          
+          <a href="#row_39">
+              <circle cx="0" cy="0" r="24" fill="#1b4f72" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID3205</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Cultura Material</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_40" transform="translate(770.0,620)"
+           v:name="Procesos de Manufactura III" 
+           v:sigla="ID3304" 
+           v:semestre="6" 
+           v:creditos="2" 
+           v:horas="3" 
+           v:area="Comunicación Visual"
+           v:requisitos="ID2108 "
+           v:correquisitos="">
+          
+          <a href="#row_40">
+              <circle cx="0" cy="0" r="24" fill="#1b4f72" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID3304</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Procesos de Manufactura III</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_41" transform="translate(770.0,730)"
+           v:name="Actividad Cultural-Deportiva" 
+           v:sigla="SE1400" 
+           v:semestre="6" 
+           v:creditos="0" 
+           v:horas="2" 
+           v:area="Otros"
+           v:requisitos=""
+           v:correquisitos="">
+          
+          <a href="#row_41">
+              <circle cx="0" cy="0" r="24" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">SE1400</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Actividad Cultural-Deportiva</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_42" transform="translate(880.0,70)"
+           v:name="Fundamentos de Mercadeo" 
+           v:sigla="AE3414" 
+           v:semestre="7" 
+           v:creditos="3" 
+           v:horas="9" 
+           v:area="Otros"
+           v:requisitos="PI2608 "
+           v:correquisitos="">
+          
+          <a href="#row_42">
+              <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#f39c12" stroke="#ffffff" stroke-width="2.5"/>
+          </a>
+
+          <text y="4" class="label-sigla">AE3414</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Fundamentos de Mercadeo</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_43" transform="translate(880.0,180)"
+           v:name="Ingeniería Económica" 
+           v:sigla="AE5121" 
+           v:semestre="7" 
+           v:creditos="3" 
+           v:horas="3" 
+           v:area="Otros"
+           v:requisitos="PI2608 "
+           v:correquisitos="">
+          
+          <a href="#row_43">
+              <circle cx="0" cy="0" r="24" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">AE5121</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Ingeniería Económica</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_44" transform="translate(880.0,290)"
+           v:name="Seminario De Estudios Filosóficos Históricos" 
+           v:sigla="CS3401" 
+           v:semestre="7" 
+           v:creditos="2" 
+           v:horas="3" 
+           v:area="Otros"
+           v:requisitos="CS1502 "
+           v:correquisitos="">
+          
+          <a href="#row_44">
+              <circle cx="0" cy="0" r="24" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">CS3401</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Seminario De Estudios Filosóficos Históricos</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_45" transform="translate(880.0,400)"
+           v:name="Centros De Formación Humanística" 
+           v:sigla="FH1000" 
+           v:semestre="7" 
+           v:creditos="0" 
+           v:horas="2" 
+           v:area="Otros"
+           v:requisitos=""
+           v:correquisitos="">
+          
+          <a href="#row_45">
+              <circle cx="0" cy="0" r="24" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">FH1000</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Centros De Formación Humanística</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_46" transform="translate(880.0,510)"
+           v:name="Diseño de Productos VII" 
+           v:sigla="ID4501" 
+           v:semestre="7" 
+           v:creditos="5" 
+           v:horas="4" 
+           v:area="Desarrollo de Productos"
+           v:requisitos="ID3111 ID3205 "
+           v:correquisitos="">
+          
+          <a href="#row_46">
+              <circle cx="0" cy="0" r="32" fill="#8e44ad" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID4501</text>
+          
+          <foreignObject x="-60" y="38" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Diseño de Productos VII</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_47" transform="translate(880.0,620)"
+           v:name="Diseño De Comunicación Visual VII" 
+           v:sigla="ID4601" 
+           v:semestre="7" 
+           v:creditos="5" 
+           v:horas="4" 
+           v:area="Comunicación Visual"
+           v:requisitos="ID2204 ID3112 "
+           v:correquisitos="">
+          
+          <a href="#row_47">
+              <circle cx="0" cy="0" r="32" fill="#1b4f72" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID4601</text>
+          
+          <foreignObject x="-60" y="38" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Diseño De Comunicación Visual VII</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_48" transform="translate(990.0,70)"
+           v:name="Seminario De Estudios Costarricenses" 
+           v:sigla="CS4402" 
+           v:semestre="8" 
+           v:creditos="2" 
+           v:horas="3" 
+           v:area="Otros"
+           v:requisitos="CS3401 "
+           v:correquisitos="">
+          
+          <a href="#row_48">
+              <circle cx="0" cy="0" r="24" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">CS4402</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Seminario De Estudios Costarricenses</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_49" transform="translate(990.0,180)"
+           v:name="Diseño VIII (Proyecto De Graduación)" 
+           v:sigla="ID4503" 
+           v:semestre="8" 
+           v:creditos="10" 
+           v:horas="30" 
+           v:area="Desarrollo de Productos"
+           v:requisitos="ID4501 ID4601 "
+           v:correquisitos="">
+          
+          <a href="#row_49">
+              <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#8e44ad" stroke="#ffffff" stroke-width="2.5"/>
+          </a>
+
+          <text y="4" class="label-sigla">ID4503</text>
+          
+          <foreignObject x="-60" y="38" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Diseño VIII (Proyecto De Graduación)</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_50" transform="translate(1100.0,70)"
+           v:name="Modelación Hardware/Software Con Orientación a Objetos" 
+           v:sigla="CE5507" 
+           v:semestre="9" 
+           v:creditos="3" 
+           v:horas="8" 
+           v:area="Otros"
+           v:requisitos="CA2125 "
+           v:correquisitos="">
+          
+          <a href="#row_50">
+              <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#f39c12" stroke="#ffffff" stroke-width="2.5"/>
+          </a>
+
+          <text y="4" class="label-sigla">CE5507</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Modelación Hardware/Software Con Orientación a Objetos</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_51" transform="translate(1100.0,180)"
+           v:name="Curso Electivo I" 
+           v:sigla="ID5513" 
+           v:semestre="9" 
+           v:creditos="3" 
+           v:horas="4" 
+           v:area="Desarrollo de Productos"
+           v:requisitos=""
+           v:correquisitos="">
+          
+          <a href="#row_51">
+              <circle cx="0" cy="0" r="24" fill="#8e44ad" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID5513</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Curso Electivo I</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_52" transform="translate(1100.0,290)"
+           v:name="Manufactura De Empaque / Embalaje" 
+           v:sigla="ID5604" 
+           v:semestre="9" 
+           v:creditos="3" 
+           v:horas="4" 
+           v:area="Desarrollo de Productos"
+           v:requisitos="ID3112 "
+           v:correquisitos="">
+          
+          <a href="#row_52">
+              <circle cx="0" cy="0" r="24" fill="#8e44ad" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID5604</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Manufactura De Empaque / Embalaje</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_53" transform="translate(1100.0,400)"
+           v:name="Diseño IX (Comunicación Visual)" 
+           v:sigla="ID5605" 
+           v:semestre="9" 
+           v:creditos="5" 
+           v:horas="4" 
+           v:area="Comunicación Visual"
+           v:requisitos="ID4503 "
+           v:correquisitos="">
+          
+          <a href="#row_53">
+              <circle cx="0" cy="0" r="32" fill="#1b4f72" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID5605</text>
+          
+          <foreignObject x="-60" y="38" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Diseño IX (Comunicación Visual)</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_54" transform="translate(1100.0,510)"
+           v:name="Seminario de Investigación (Comunicación Visual)" 
+           v:sigla="ID5606" 
+           v:semestre="9" 
+           v:creditos="3" 
+           v:horas="4" 
+           v:area="Otros"
+           v:requisitos=""
+           v:correquisitos="ID4503 ">
+          
+          <a href="#row_54">
+              <circle cx="0" cy="0" r="24" fill="#f39c12" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID5606</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Seminario de Investigación (Comunicación Visual)</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_55" transform="translate(1210.0,70)"
+           v:name="Gestión de Proyectos" 
+           v:sigla="ID5114" 
+           v:semestre="10" 
+           v:creditos="2" 
+           v:horas="2" 
+           v:area="Desarrollo de Productos"
+           v:requisitos=""
+           v:correquisitos="ID5115 ">
+          
+          <a href="#row_55">
+              <circle cx="0" cy="0" r="24" fill="#8e44ad" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID5114</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Gestión de Proyectos</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_56" transform="translate(1210.0,180)"
+           v:name="Innovación De Productos" 
+           v:sigla="ID5115" 
+           v:semestre="10" 
+           v:creditos="2" 
+           v:horas="2" 
+           v:area="Desarrollo de Productos"
+           v:requisitos="ID5605 "
+           v:correquisitos="ID5114 ">
+          
+          <a href="#row_56">
+              <circle cx="0" cy="0" r="24" fill="#8e44ad" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID5115</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Innovación De Productos</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_57" transform="translate(1210.0,290)"
+           v:name="Curso Electivo II" 
+           v:sigla="ID5514" 
+           v:semestre="10" 
+           v:creditos="3" 
+           v:horas="4" 
+           v:area="Desarrollo de Productos"
+           v:requisitos=""
+           v:correquisitos="">
+          
+          <a href="#row_57">
+              <circle cx="0" cy="0" r="24" fill="#8e44ad" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID5514</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Curso Electivo II</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_58" transform="translate(1210.0,400)"
+           v:name="Teoría De Las Interfaces Y La Interactividad" 
+           v:sigla="ID5516" 
+           v:semestre="10" 
+           v:creditos="2" 
+           v:horas="2" 
+           v:area="Comunicación Visual"
+           v:requisitos="ID5604 "
+           v:correquisitos="">
+          
+          <a href="#row_58">
+              <circle cx="0" cy="0" r="24" fill="#1b4f72" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID5516</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Teoría De Las Interfaces Y La Interactividad</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_59" transform="translate(1210.0,510)"
+           v:name="Teoría Del Diseño De La Información" 
+           v:sigla="ID5602" 
+           v:semestre="10" 
+           v:creditos="2" 
+           v:horas="4" 
+           v:area="Comunicación Visual"
+           v:requisitos=""
+           v:correquisitos="ID5516 ">
+          
+          <a href="#row_59">
+              <circle cx="0" cy="0" r="24" fill="#1b4f72" stroke="#ffffff" stroke-width="2.5" />
+          </a>
+
+          <text y="4" class="label-sigla">ID5602</text>
+          
+          <foreignObject x="-60" y="30" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Teoría Del Diseño De La Información</span>
+            </div>
+          </foreignObject>
+        </g>
+
+        
+        
+
+
+
+
+
+        <g class="curso-node" id="node_link_60" transform="translate(1210.0,620)"
+           v:name="Trabajo Final de Graduación (Comunicación)" 
+           v:sigla="ID5611" 
+           v:semestre="10" 
+           v:creditos="7" 
+           v:horas="30" 
+           v:area="Comunicación Visual"
+           v:requisitos="ID5605 ID5606 "
+           v:correquisitos="">
+          
+          <a href="#row_60">
+              <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#1b4f72" stroke="#ffffff" stroke-width="2.5"/>
+          </a>
+
+          <text y="4" class="label-sigla">ID5611</text>
+          
+          <foreignObject x="-60" y="38" width="120" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="node-container">
+              <span class="label-html-nombre">Trabajo Final de Graduación (Comunicación)</span>
             </div>
           </foreignObject>
         </g>
 
     </g>
 
-        <text x="320.0" y="-35" text-anchor="middle" class="axis-text">Bloque 1</text>
-        <text x="480.0" y="-35" text-anchor="middle" class="axis-text">Bloque 2</text>
-        <text x="640.0" y="-35" text-anchor="middle" class="axis-text">Bloque 3</text>
-        <text x="800.0" y="-35" text-anchor="middle" class="axis-text">Bloque 4</text>
-
-    <g id="labels-ramas">
-        
-        
-          
-          <text x="10" y="44.0" text-anchor="start" class="axis-text" style="fill: #c0392b; font-size: 11px;">Programación</text>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-          
-          <text x="10" y="304.0" text-anchor="start" class="axis-text" style="fill: #8e44ad; font-size: 11px;">Matemáticas</text>
-        
-        
-        
-        
-        
-        
-          
-          <text x="10" y="477.33333333333337" text-anchor="start" class="axis-text" style="fill: #16a085; font-size: 11px;">Bases de Datos</text>
-        
-        
-        
-        
-    </g>
+        <text x="220.0" y="-45" text-anchor="middle" class="axis-text">Bloque 1</text>
+        <text x="330.0" y="-45" text-anchor="middle" class="axis-text">Bloque 2</text>
+        <text x="440.0" y="-45" text-anchor="middle" class="axis-text">Bloque 3</text>
+        <text x="550.0" y="-45" text-anchor="middle" class="axis-text">Bloque 4</text>
+        <text x="660.0" y="-45" text-anchor="middle" class="axis-text">Bloque 5</text>
+        <text x="770.0" y="-45" text-anchor="middle" class="axis-text">Bloque 6</text>
+        <text x="880.0" y="-45" text-anchor="middle" class="axis-text">Bloque 7</text>
+        <text x="990.0" y="-45" text-anchor="middle" class="axis-text">Bloque 8</text>
+        <text x="1100.0" y="-45" text-anchor="middle" class="axis-text">Bloque 9</text>
+        <text x="1210.0" y="-45" text-anchor="middle" class="axis-text">Bloque 10</text>
 
   </g>
 
   <v:table id="datos_plan" columns="Sigla, Nombre, Semestre, Créditos, Horas, Área" visualization="chart">
-      <v:row id="row_0">FP101,Fundamentos de Programación,1,4,6,Programación</v:row>
-      <v:row id="row_1">POO202,Programación Orientada a Objetos,2,4,6,Programación</v:row>
-      <v:row id="row_2">ED303,Estructuras de Datos,3,5,8,Programación</v:row>
-      <v:row id="row_3">MAT101,Cálculo Diferencial,1,4,5,Matemáticas</v:row>
-      <v:row id="row_4">MAT202,Cálculo Integral,2,4,5,Matemáticas</v:row>
-      <v:row id="row_5">BD404,Bases de Datos,4,4,6,Bases de Datos</v:row>
-      <v:row id="row_6">MAT303,Álgebra Lineal,3,3,4,Matemáticas</v:row>
+      <v:row id="row_0">CI0200,Examen Diagnóstico,0,0,0,Otros</v:row>
+      <v:row id="row_1">CI0202,Inglés Básico,0,2,3,Otros</v:row>
+      <v:row id="row_2">CI1106,Comunicación Escrita,1,2,6,Otros</v:row>
+      <v:row id="row_3">CS1502,Introducción A La Técnica Ciencia y Tecnología,1,1,2,Otros</v:row>
+      <v:row id="row_4">ID1101,Análisis De Producto I,1,2,2,Comunicación Visual</v:row>
+      <v:row id="row_5">ID1103,Métodos De Desarrollo De Productos,1,2,2,Comunicación Visual</v:row>
+      <v:row id="row_6">ID1118,Fundamentos Del Diseńo,1,3,9,Comunicación Visual</v:row>
+      <v:row id="row_7">ID1205,Taller De Dibujo,1,3,9,Comunicación Visual</v:row>
+      <v:row id="row_8">MA0101,Matemática General,1,2,5,Otros</v:row>
+      <v:row id="row_9">CI1107,Comunicación Oral,2,1,3,Otros</v:row>
+      <v:row id="row_10">FI1101,Física General I,2,3,4,Otros</v:row>
+      <v:row id="row_11">FI1201,Laboratorio Física General I,2,1,2,Otros</v:row>
+      <v:row id="row_12">ID1104,Análisis De Producto II,2,2,2,Comunicación Visual</v:row>
+      <v:row id="row_13">ID1119,Principios Del Diseńo,2,2,6,Comunicación Visual</v:row>
+      <v:row id="row_14">ID1206,Modelado y Simulación,2,3,9,Comunicación Visual</v:row>
+      <v:row id="row_15">MA1102,Cálculo Diferencial E Integral,2,4,5,Otros</v:row>
+      <v:row id="row_16">FI2103,Física General III,3,3,4,Otros</v:row>
+      <v:row id="row_17">ID2120,Comunicación Visual,3,3,9,Comunicación Visual</v:row>
+      <v:row id="row_18">ID2207,Análisis Del Espacio Tridimensional,3,3,9,Comunicación Visual</v:row>
+      <v:row id="row_19">ID2301,Principios Estructurales,3,2,4,Desarrollo de Productos</v:row>
+      <v:row id="row_20">ID2401,Ergonomía,3,2,3,Desarrollo de Productos</v:row>
+      <v:row id="row_21">QU1902,Fundamentos de Química,3,4,5,Otros</v:row>
+      <v:row id="row_22">CA2125,Elementos de Computación,4,3,4,Otros</v:row>
+      <v:row id="row_23">ID2107,Diseño I,4,4,3,Desarrollo de Productos</v:row>
+      <v:row id="row_24">ID2108,Diseńo II,4,4,3,Comunicación Visual</v:row>
+      <v:row id="row_25">ID23302,Procesos De Manufactura I,4,2,3,Desarrollo de Productos</v:row>
+      <v:row id="row_26">MA2117,Cálculo Y Geometría Analítica,4,4,4,Otros</v:row>
+      <v:row id="row_27">SE1100,Actividad Cultural I,4,0,2,Otros</v:row>
+      <v:row id="row_28">CI1230,Inglés I,5,2,6,Otros</v:row>
+      <v:row id="row_29">ID2204,Herramientas Digitales Para Diseño,5,2,3,Desarrollo de Productos</v:row>
+      <v:row id="row_30">ID3109,Diseño III,5,4,3,Desarrollo de Productos</v:row>
+      <v:row id="row_31">ID3110,Diseño IV,5,4,3,Comunicación Visual</v:row>
+      <v:row id="row_32">ID3303,Procesos De Manufactura II,5,2,3,Desarrollo de Productos</v:row>
+      <v:row id="row_33">PI2608,Análisis Estadístico,5,3,4,Otros</v:row>
+      <v:row id="row_34">SE1200,Actividad Deportiva I,5,0,2,Otros</v:row>
+      <v:row id="row_35">CI1231,Inglés II,6,2,3,Otros</v:row>
+      <v:row id="row_36">ID3111,Diseño V,6,4,3,Desarrollo de Productos</v:row>
+      <v:row id="row_37">ID3112,Diseño VI,6,4,3,Comunicación Visual</v:row>
+      <v:row id="row_38">ID3113,Biónica y Eco-Diseño,6,3,3,Desarrollo de Productos</v:row>
+      <v:row id="row_39">ID3205,Cultura Material,6,3,3,Comunicación Visual</v:row>
+      <v:row id="row_40">ID3304,Procesos de Manufactura III,6,2,3,Comunicación Visual</v:row>
+      <v:row id="row_41">SE1400,Actividad Cultural-Deportiva,6,0,2,Otros</v:row>
+      <v:row id="row_42">AE3414,Fundamentos de Mercadeo,7,3,9,Otros</v:row>
+      <v:row id="row_43">AE5121,Ingeniería Económica,7,3,3,Otros</v:row>
+      <v:row id="row_44">CS3401,Seminario De Estudios Filosóficos Históricos,7,2,3,Otros</v:row>
+      <v:row id="row_45">FH1000,Centros De Formación Humanística,7,0,2,Otros</v:row>
+      <v:row id="row_46">ID4501,Diseño de Productos VII,7,5,4,Desarrollo de Productos</v:row>
+      <v:row id="row_47">ID4601,Diseño De Comunicación Visual VII,7,5,4,Comunicación Visual</v:row>
+      <v:row id="row_48">CS4402,Seminario De Estudios Costarricenses,8,2,3,Otros</v:row>
+      <v:row id="row_49">ID4503,Diseño VIII (Proyecto De Graduación),8,10,30,Desarrollo de Productos</v:row>
+      <v:row id="row_50">CE5507,Modelación Hardware/Software Con Orientación a Objetos,9,3,8,Otros</v:row>
+      <v:row id="row_51">ID5513,Curso Electivo I,9,3,4,Desarrollo de Productos</v:row>
+      <v:row id="row_52">ID5604,Manufactura De Empaque / Embalaje,9,3,4,Desarrollo de Productos</v:row>
+      <v:row id="row_53">ID5605,Diseño IX (Comunicación Visual),9,5,4,Comunicación Visual</v:row>
+      <v:row id="row_54">ID5606,Seminario de Investigación (Comunicación Visual),9,3,4,Otros</v:row>
+      <v:row id="row_55">ID5114,Gestión de Proyectos,10,2,2,Desarrollo de Productos</v:row>
+      <v:row id="row_56">ID5115,Innovación De Productos,10,2,2,Desarrollo de Productos</v:row>
+      <v:row id="row_57">ID5514,Curso Electivo II,10,3,4,Desarrollo de Productos</v:row>
+      <v:row id="row_58">ID5516,Teoría De Las Interfaces Y La Interactividad,10,2,2,Comunicación Visual</v:row>
+      <v:row id="row_59">ID5602,Teoría Del Diseño De La Información,10,2,4,Comunicación Visual</v:row>
+      <v:row id="row_60">ID5611,Trabajo Final de Graduación (Comunicación),10,7,30,Comunicación Visual</v:row>
   </v:table>
 
 </svg>

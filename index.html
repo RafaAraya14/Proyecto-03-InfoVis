@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prueba de Plan de Estudios - ODViz</title>
+  <title>Plan de Estudios Ingeniería en Diseño Industrial</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { overflow: hidden; height: 100vh; display: flex; flex-direction: column; font-family: 'Segoe UI', sans-serif; }
@@ -14,8 +14,13 @@
     .top-bar h3 { font-size: 18px; font-weight: 600; }
     
     #split-container { width: 100vw; flex-grow: 1; height: calc(100vh - 50px); display: flex; flex-direction: column; }
-    #svg-panel { background: #fafafa; display: flex; justify-content: center; align-items: center; overflow: auto; position: relative; }
-    #svg-panel object { width: 100%; height: 100%; display: block; }
+    
+    /* MODIFICADO: Panel ahora actúa como viewport de scroll */
+    #svg-panel { background: #fafafa; overflow: auto; position: relative; width: 100%; height: 100%; }
+    
+    /* NUEVO: Envoltorio para forzar las dimensiones de renderizado del SVG */
+    #svg-wrapper { width: 1650px; height: 1000px; padding: 20px; }
+    #svg-object { width: 100%; height: 100%; display: block; }
     
     #table-panel { background: #ffffff; padding: 20px; overflow: auto; border-top: 2px solid #bdc3c7; }
     
@@ -24,7 +29,7 @@
     .data-table th, .data-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #e0e0e0; }
     .data-table th { background-color: #f4f6f7; color: #34495e; font-weight: bold; }
     .data-table tr.selected { background-color: #d4e6f1 !important; font-weight: 600; }
-    .data-table tr:hover { background-color: #faa; background-color: #f5f7f8; cursor: pointer; }
+    .data-table tr:hover { background-color: #f5f7f8; cursor: pointer; }
 
     /* Estilizador del separador Split.js */
     .gutter.gutter-vertical { background: #2980b9; cursor: row-resize; height: 8px !important; }
@@ -35,12 +40,14 @@
 <body>
 
   <div class="top-bar">
-    <h3>Visualizador del Plan de Estudios Interactivo (ODViz)</h3>
+    <h3>Plan de Estudios Interactivo</h3>
   </div>
 
   <div id="split-container">
     <div id="svg-panel">
-      <object id="svg-object" type="image/svg+xml" data="./svg/output.svg"></object>
+      <div id="svg-wrapper">
+        <object id="svg-object" type="image/svg+xml" data="./svg/output.svg"></object>
+      </div>
     </div>
     
     <div id="table-panel">
@@ -70,7 +77,6 @@
   </div>
 
   <script>
-    // Inicializar Split.js en formato Vertical (Panel gráfico arriba, Tabla abajo) [cite: 117]
     Split(["#svg-panel", "#table-panel"], {
       sizes: [65, 35],
       direction: "vertical",
@@ -87,7 +93,6 @@
         return;
       }
 
-      // 1. Extraer los datos desde la etiqueta oculta <v:table> que inyectamos en el SVG [cite: 117]
       const factTable = svgDoc.querySelector('v\\:table, table'); 
       const rows = svgDoc.getElementsByTagName('v:row');
       const tbody = document.getElementById('table-body');
@@ -97,9 +102,8 @@
         return;
       }
 
-      tbody.innerHTML = ""; // Limpiar mensaje de carga
+      tbody.innerHTML = ""; 
 
-      // 2. Poblar la tabla HTML dinámicamente con los datos mapeados del JSON [cite: 9, 117]
       for (let row of rows) {
         const rowId = row.getAttribute('id');
         const content = row.textContent.trim();
@@ -114,25 +118,25 @@
           tr.appendChild(td);
         });
 
-        // Evento: Al hacer clic en una fila de la tabla, resalta el nodo correspondiente en el SVG [cite: 117]
         tr.addEventListener('click', function() {
           deseleccionarTodo();
           tr.classList.add('selected');
           
-          // Buscar el elemento gráfico en el SVG usando el índice de la fila
           const index = rowId.split('_')[1];
           const svgNode = svgDoc.getElementById(`node_link_${index}`);
           if (svgNode) {
             svgNode.style.outline = "3px solid #2980b9";
             svgNode.style.outlineOffset = "4px";
             svgNode.style.transition = "all 0.2s";
+            
+            // NUEVO: Auto-scroll dentro del panel SVG para enfocar el nodo seleccionado
+            svgNode.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
           }
         });
 
         tbody.appendChild(tr);
       }
 
-      // 3. Vincular los clics del SVG hacia la Tabla HTML (Interacción Inversa)
       const cursoNodes = svgDoc.querySelectorAll('.curso-node');
       cursoNodes.forEach(node => {
         node.addEventListener('click', function(e) {
@@ -153,7 +157,6 @@
           }
         });
 
-        // Evento Doble Clic
         node.addEventListener('dblclick', function(e) {
           e.preventDefault();
           const sigla = node.getAttribute('v:sigla') || 'N/A';
@@ -171,7 +174,6 @@
                 `• Área Académica: ${area}`);
         }); 
       }); 
-
 
       const buscador = document.getElementById('buscador-odviz');
       if (buscador) {
@@ -191,7 +193,6 @@
       }
 
       const filterObserver = new MutationObserver(() => {
-        const rows = document.querySelectorAll('#table-body tr[data-row-id]');
         rows.forEach(row => {
           const rowId = row.getAttribute('data-row-id');
           const index = rowId.split('_')[1];
@@ -206,17 +207,16 @@
           }
         });
 
-        // B. Ocultar los enlaces (flechas)
+        // Corrección del mapeo de atributos de filtrado para los paths vectoriales
         const links = svgDoc.querySelectorAll('.edge-requisito, .edge-correquisito');
         links.forEach(link => {
-          const fuente = link.getAttribute('data-fuente');
-          const destino = link.getAttribute('data-destino');
+          const fuente = link.getAttribute('v:fuente');
+          const destino = link.getAttribute('v:destino');
           
           let nodoFuenteVisible = false;
           let nodoDestinoVisible = false;
 
-          const todosLosNodos = svgDoc.querySelectorAll('.curso-node');
-          todosLosNodos.forEach(n => {
+          cursoNodes.forEach(n => {
             if (n.getAttribute('v:sigla') === fuente) {
               nodoFuenteVisible = (n.style.display !== 'none');
             }
@@ -225,7 +225,6 @@
             }
           });
           
-          // Ocultamos la flecha si alguno no está visible (o si no tienen atributo)
           if (!nodoFuenteVisible || !nodoDestinoVisible) {
             link.style.display = 'none'; 
           } else {
